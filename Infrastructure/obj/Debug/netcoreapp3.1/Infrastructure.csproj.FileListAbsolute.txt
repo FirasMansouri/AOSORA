@@ -1,0 +1,10 @@
+D:\MyWorkspace\.net\ASPNET1\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.deps.json
+D:\MyWorkspace\.net\ASPNET1\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.dll
+D:\MyWorkspace\.net\ASPNET1\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.pdb
+D:\MyWorkspace\.net\ASPNET1\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.AssemblyReference.cache
+D:\MyWorkspace\.net\ASPNET1\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyWorkspace\.net\ASPNET1\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.AssemblyInfoInputs.cache
+D:\MyWorkspace\.net\ASPNET1\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.AssemblyInfo.cs
+D:\MyWorkspace\.net\ASPNET1\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.CoreCompileInputs.cache
+D:\MyWorkspace\.net\ASPNET1\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.dll
+D:\MyWorkspace\.net\ASPNET1\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.pdb

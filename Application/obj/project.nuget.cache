@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "Z+IGyJPQc+SLLTQxo3saqaJjAPIp3xnY+AJTRJFPwVAtSurHbYt2dh6p3CWgRWp6m40gQ1/7lxIPlSDW7GgIdw==",
+  "success": true,
+  "projectFilePath": "D:\\MyWorkspace\\.net\\ASPNET1\\Application\\Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Firas\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
+    "C:\\Users\\Firas\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\Firas\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\Firas\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
