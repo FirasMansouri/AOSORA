@@ -11,7 +11,7 @@ namespace Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>(b =>
+            modelBuilder.Entity<UserEntity>(b =>
             {
                 b.ToTable("Users").HasKey(x => x.id);
                 b.Property(x => x.name).HasMaxLength(255).HasDefaultValue(string.Empty);

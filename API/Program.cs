@@ -18,11 +18,17 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddMediatR(typeof(AddProductCommandHandler).GetTypeInfo().Assembly);
     builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
     builder.Services.AddTransient<IProductRepository, ProductRepository>();
+    builder.Services.AddTransient<IUserRepository, UserRepository>();
     builder.Services.AddRazorPages();
 }
 
 var app = builder.Build();
 {
+    app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+
     app.UseHttpsRedirection();
     app.UseStaticFiles();
     app.UseRouting();
