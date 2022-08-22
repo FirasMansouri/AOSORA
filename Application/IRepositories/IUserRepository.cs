@@ -7,5 +7,6 @@ namespace Application.IRepositories
     public interface IUserRepository : IRepository<UserEntity>
     {
         Task<UserEntity> Register(UserEntity entity);
+        Task<UserEntity> login(int id);
     }
 }

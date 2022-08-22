@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Application.User.Commands;
 using Domain.Object_Values;
+using Application.User.Queries;
 
 namespace API.Controllers
 {
@@ -24,6 +25,14 @@ namespace API.Controllers
             var command = new RegisterCommand(request.name, request.email, request.password, ad);
             var result = await _mediator.Send(command);
             return Ok(result);
+        }
+
+        [Route("login")]
+        [HttpGet]
+        public async Task<UserEntity> login(int id)
+        {
+            var query = new LoginQuery(id);
+            return await _mediator.Send(query);
         }
 
     }
