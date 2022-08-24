@@ -8601,6 +8601,15 @@ Profile Authentication Area CSS
   color: var(--blackColor);
 }
 
+.login-form form.ng-invalid button {
+  opacity: 0.5;
+}
+
+.login-form form.ng-invalid button:hover {
+  color: var(--whiteColor);
+  background-color: var(--mainColor);
+}
+
 .register-form {
   padding-left: 30px;
 }
@@ -8653,6 +8662,15 @@ Profile Authentication Area CSS
 .register-form form button:hover {
   background-color: var(--whiteColor);
   color: var(--blackColor);
+}
+
+.register-form form.ng-invalid button {
+  opacity: 0.5;
+}
+
+.register-form form.ng-invalid button:hover {
+  color: var(--whiteColor);
+  background-color: var(--mainColor);
 }
 
 /*================================================

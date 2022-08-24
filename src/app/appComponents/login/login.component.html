@@ -1,0 +1,87 @@
+<section class="profile-authentication-area ptb-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-12">
+                <div class="login-form">
+                    <h2>Login</h2>
+
+                    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="email"
+                            ngModel
+                            name="Email"
+                            required
+                            email
+                            #Email="ngModel"
+                            (blur)="onEmailBlur(Email.value, loginForm)"
+                            >
+                            <small *ngIf="Email.errors && Email.errors.required && Email.touched">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                  </svg>
+                                email is required
+                            </small>
+                            <small *ngIf="Email.errors && Email.errors.email && Email.touched">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                  </svg>
+                                email should be valid
+                            </small>
+                            <small *ngIf="Email.errors==null && Email.status=='INVALID'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                  </svg>
+                                email does not exist
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input 
+                            type="password" 
+                            class="form-control" 
+                            placeholder="Password"
+                            ngModel
+                            name="Password"
+                            required
+                            #Password="ngModel"
+                            >
+                            <small *ngIf="!Password.valid && Password.touched">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                  </svg>
+                                  Password is required
+                            </small>
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-6 col-sm-6 remember-me-wrap">
+                                <!-- <p>
+                                    <input type="checkbox" id="test2">
+                                    <label for="test2">Remember me</label>
+                                </p> -->
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 lost-your-password-wrap">
+                                <a href="#" class="lost-your-password">Lost your password?</a>
+                            </div>
+                        </div>
+
+                        <button 
+                        type="submit" 
+                        [disabled]="!loginForm.valid"
+                        >Log In</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

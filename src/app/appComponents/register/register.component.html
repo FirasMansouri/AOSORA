@@ -1,0 +1,136 @@
+<section class="profile-authentication-area ptb-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-12">
+                <div class="register-form">
+                    <h2>Register</h2>
+                    
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="Username">Username</label>
+                            <input type="text" 
+                            class="form-control" 
+                            placeholder="Username" 
+                            id="Username"
+                            formControlName="Username"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="City">City</label>
+                            <input type="text" 
+                            class="form-control" 
+                            placeholder="City" 
+                            id="City"
+                            formControlName="City"
+                            />
+                            <small *ngIf="!registerForm.get('City').valid && registerForm.get('City').touched">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                  </svg>
+                                city is required
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="street">Street</label>
+                            <input type="text" 
+                            class="form-control" 
+                            placeholder="Street" 
+                            id="Street"
+                            formControlName="Street"
+                            >
+                            <small *ngIf="!registerForm.get('Street').valid && registerForm.get('Street').touched">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                  </svg>
+                                  street is required
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ZipCode">Zip Code</label>
+                            <input type="text" 
+                            class="form-control" 
+                            placeholder="Zip Code" 
+                            id="ZipCode"
+                            formControlName="ZipCode"
+                            >
+                            <small *ngIf="!registerForm.get('ZipCode').valid && registerForm.get('ZipCode').touched">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                  </svg>
+                                  zip code is required
+                            </small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                            <input type="email" 
+                            class="form-control" 
+                            placeholder="Email" 
+                            id="Email"
+                            formControlName="Email"
+                            (blur)="onEmailBlur(registerForm.get('Email').value)"
+                            >
+                            <small *ngIf="registerForm.get('Email').errors && registerForm.get('Email').errors.required && registerForm.get('Email').touched">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                  </svg>
+                                email is required
+                            </small>
+                            <small *ngIf="registerForm.get('Email').errors && registerForm.get('Email').errors.email && registerForm.get('Email').touched">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                  </svg>
+                                email should be valid
+                            </small>
+                            <small *ngIf="registerForm.get('Email').errors==null && registerForm.get('Email').status=='INVALID'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                  </svg>
+                                email already exists
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Password">Password</label>
+                            <input type="password" 
+                            class="form-control" 
+                            placeholder="Password" 
+                            id="Password"
+                            formControlName="Password"
+                            >
+                            <small *ngIf="registerForm.get('Password').errors && registerForm.get('Password').errors.required && registerForm.get('Password').touched">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                  </svg>
+                                password is required
+                            </small>
+                            <small *ngIf="registerForm.get('Password').errors && registerForm.get('Password').errors.pattern && registerForm.get('Password').touched">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                  </svg>
+                                  The password should be at least eight characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ & )
+                            </small>
+                        </div>
+                        
+                        
+                        <button type="submit" 
+                        [disabled]="!registerForm.valid"
+                        >Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

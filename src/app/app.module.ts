@@ -13,6 +13,10 @@ import { HomeComponent } from './appComponents/home/home.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './appComponents/main/main.component';
+import { RegisterComponent } from './appComponents/register/register.component';
+import { LoginComponent } from './appComponents/login/login.component';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -28,10 +32,15 @@ import { MainComponent } from './appComponents/main/main.component';
     MainBannerComponent,
     HomeComponent,
     MainComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [RouterModule],
   providers: [],
