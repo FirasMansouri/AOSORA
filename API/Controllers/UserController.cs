@@ -29,10 +29,20 @@ namespace API.Controllers
 
         [Route("login")]
         [HttpGet]
-        public async Task<UserEntity> login(int id)
+        public async Task<ActionResult<UserEntity>> login(string email, string password)
         {
-            var query = new LoginQuery(id);
-            return await _mediator.Send(query);
+            var query = new LoginQuery(email, password);
+            var result =await _mediator.Send(query);
+            return Ok(result);
+        }
+
+        [Route("Email")]
+        [HttpGet]
+        public async Task<ActionResult<UserEntity>> FindEmail(string email)
+        {
+            var query = new FindEmailQuery(email);
+            var result = await _mediator.Send(query);
+            return Ok(result);
         }
 
     }

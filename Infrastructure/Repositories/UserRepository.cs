@@ -4,6 +4,8 @@ using Infrastructure.Repositories.Base;
 using Application.IRepositories;
 using System.Threading.Tasks;
 using System;
+using System.Linq;
+using System.Text.Json;
 
 namespace Infrastructure.Repositories
 {
@@ -15,21 +17,37 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<UserEntity> login(int id)
+        public async Task<bool> FindEmail(string email)
         {
-            UserEntity entity = await _context.Set<UserEntity>().FindAsync(id);
+            var user = _context.Set<UserEntity>().FirstOrDefault(u=>u.email==email);
+            if (user == null) { return  false ;  } else { return  true ; }
+        }
 
-            var encodedData = entity.password;
-            System.Text.UTF8Encoding encoder = new System.Text.UTF8Encoding();
-            System.Text.Decoder utf8Decode = encoder.GetDecoder();
-            byte[] todecode_byte = Convert.FromBase64String(encodedData);
-            int charCount = utf8Decode.GetCharCount(todecode_byte, 0, todecode_byte.Length);
-            char[] decoded_char = new char[charCount];
-            utf8Decode.GetChars(todecode_byte, 0, todecode_byte.Length, decoded_char, 0);
-            string result = new String(decoded_char);
-            entity.password = result;
+        public async Task<string> login(string email, string password)
+        {
+            string response = "";
 
-            return entity;
+            byte[] encData_byte = new byte[password.Length];
+            encData_byte = System.Text.Encoding.UTF8.GetBytes(password);
+            string encodedData = Convert.ToBase64String(encData_byte);
+
+            var user = _context.Set<UserEntity>().FirstOrDefault(u=>u.email==email);
+            if (user==null)
+            {
+                response = "email does not exist";
+            }
+            else if(user.password != encodedData)
+            {
+                response = "incorrect password";
+            }
+            else
+            {
+                user.password = "";
+                string jsonString = JsonSerializer.Serialize(user);
+                response = jsonString;
+            }
+            return response;
+
         }
 
         public async Task<UserEntity> Register(UserEntity entity)

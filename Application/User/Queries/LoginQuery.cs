@@ -5,6 +5,7 @@ namespace Application.User.Queries
 {
     public record LoginQuery
     (
-        int id
-    ) : IRequest<UserEntity>;
+        string email,
+        string password
+    ) : IRequest<string>;
 }
