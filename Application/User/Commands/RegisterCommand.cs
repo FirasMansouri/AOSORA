@@ -9,5 +9,5 @@ namespace Application.User.Commands
         string email,
         string password,
         Address address
-    ) : IRequest<UserEntity>;
+        ) : IRequest<UserEntity>;
 }

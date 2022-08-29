@@ -6,15 +6,20 @@ using System.Threading.Tasks;
 using System;
 using System.Linq;
 using System.Text.Json;
+using Infrastructure.Utils;
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace Infrastructure.Repositories
 {
     public class UserRepository : Repository<UserEntity>, IUserRepository
     {
+        private readonly IUtils _utils;
         private readonly ProductContext _context;
-        public UserRepository(ProductContext context) : base(context) 
+        public UserRepository(ProductContext context, IUtils utils) : base(context) 
         {
             _context = context;
+            _utils = utils; 
         }
 
         public async Task<bool> FindEmail(string email)
@@ -26,12 +31,9 @@ namespace Infrastructure.Repositories
         public async Task<string> login(string email, string password)
         {
             string response = "";
+            string encodedData = _utils.EncryptPwd(password);
 
-            byte[] encData_byte = new byte[password.Length];
-            encData_byte = System.Text.Encoding.UTF8.GetBytes(password);
-            string encodedData = Convert.ToBase64String(encData_byte);
-
-            var user = _context.Set<UserEntity>().FirstOrDefault(u=>u.email==email);
+            var user = _context.Set<UserEntity>().Include(user=>user.role).FirstOrDefault(u => u.email == email);
             if (user==null)
             {
                 response = "email does not exist";
@@ -43,8 +45,14 @@ namespace Infrastructure.Repositories
             else
             {
                 user.password = "";
-                string jsonString = JsonSerializer.Serialize(user);
-                response = jsonString;
+                string token= _utils.GenerateToken(user);
+                JsonSerializerOptions options = new()
+                {
+                    ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                    WriteIndented = true
+                };
+                string jsonResult = JsonSerializer.Serialize(user, options);
+                response = jsonResult+","+token;
             }
             return response;
 
@@ -52,21 +60,25 @@ namespace Infrastructure.Repositories
 
         public async Task<UserEntity> Register(UserEntity entity)
         {
-            try
+            string encodedData = _utils.EncryptPwd(entity.password);
+            
+            var role = _context.Roles.Where(r => r.RoleName == "MEMBER").FirstOrDefault();
+
+            var newUser = new UserEntity
             {
-                byte[] encData_byte = new byte[entity.password.Length];
-                encData_byte = System.Text.Encoding.UTF8.GetBytes(entity.password);
-                string encodedData = Convert.ToBase64String(encData_byte);
-                entity.password = encodedData;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error in base64Encode" + ex.Message);
-            }
-            await _context.Set<UserEntity>().AddAsync(entity);
+                email = entity.email,
+                password = encodedData,
+                address = entity.address,
+                name = entity.name,
+                role = role
+            };
+
+            await _context.Set<UserEntity>().AddAsync(newUser);
             _context.SaveChanges();
             entity.password = "";
+
             return entity;
+
         }
     }
 }
