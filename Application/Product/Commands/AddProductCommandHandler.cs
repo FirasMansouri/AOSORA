@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 namespace Application.Product.Commands
 {
-    public class AddProductCommandHandler : IRequestHandler<AddProductCommand, ProductEntity>
+    public class AddProductCommandHandler : IRequestHandler<AddProductCommand, string>
     {
         private readonly IProductRepository _productRepository;
 
@@ -13,16 +13,16 @@ namespace Application.Product.Commands
         {
             _productRepository = productRepository;
         }
-        public Task<ProductEntity> Handle(AddProductCommand request, CancellationToken cancellationToken)
+        public Task<string> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
             var p = new ProductEntity
             {
-                ProductId = request.ProductId,
-                ProductName = request.ProductName,
-                ProductCategory = request.ProductCategory
+                Id = request.Id,
+                Name = request.Name,
+                //Category = request.Category;
             };
 
-            return _productRepository.AddAsync(p);
+            return _productRepository.AddProduct(p);
         }
     }
 }

@@ -37,74 +37,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("Domain.Entities.User", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
-
-                    b.Property<string>("email")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasDefaultValue("");
-
-                    b.Property<string>("name")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasDefaultValue("");
-
-                    b.Property<string>("password")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasDefaultValue("");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Users", (string)null);
-                });
-
-            modelBuilder.Entity("Domain.Entities.User", b =>
-                {
-                    b.OwnsOne("Domain.Object_Values.Address", "address", b1 =>
-                        {
-                            b1.Property<int>("Userid")
-                                .HasColumnType("int");
-
-                            b1.Property<string>("City")
-                                .ValueGeneratedOnAdd()
-                                .HasMaxLength(255)
-                                .HasColumnType("nvarchar(255)")
-                                .HasDefaultValue("");
-
-                            b1.Property<string>("Street")
-                                .ValueGeneratedOnAdd()
-                                .HasMaxLength(255)
-                                .HasColumnType("nvarchar(255)")
-                                .HasDefaultValue("");
-
-                            b1.Property<string>("ZipCode")
-                                .ValueGeneratedOnAdd()
-                                .HasMaxLength(255)
-                                .HasColumnType("nvarchar(255)")
-                                .HasDefaultValue("");
-
-                            b1.HasKey("Userid");
-
-                            b1.ToTable("Users");
-
-                            b1.WithOwner()
-                                .HasForeignKey("Userid");
-                        });
-
-                    b.Navigation("address");
+                    b.ToTable("Products", (string)null);
                 });
 #pragma warning restore 612, 618
         }
