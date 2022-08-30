@@ -22,13 +22,22 @@ namespace Infrastructure.Repositories.Base
             return entity;
         }
 
-        public void DeleteAsync(T entity)
+        public async Task<bool> DeleteAsync(int id)
         {
-            _context.Set<T>().Remove(entity);
-            _context.SaveChanges();
+            T e = await _context.Set<T>().FindAsync(id);
+            if (e == null)
+            {
+                return false;
+            }
+            else
+            {
+                _context.Set<T>().Remove(e);
+                _context.SaveChanges();
+                return true;
+            }           
         }
 
-        public IReadOnlyList<T> GetAllAsync()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
             throw new System.NotImplementedException();
         }
@@ -36,11 +45,17 @@ namespace Infrastructure.Repositories.Base
         public async Task<T> GetByIdAsync(int id)
         {
             T entity = await _context.Set<T>().FindAsync(id);
-            _context.SaveChanges();
-            return entity;
+            if (entity == null)
+            {
+                return null;
+            }
+            else
+            {
+                return entity;
+            }
         }
 
-        public T UpdateAsync(T entity)
+        public async Task<T> UpdateAsync(T entity)
         {
             _context.Set<T>().Update(entity);
             _context.SaveChanges();

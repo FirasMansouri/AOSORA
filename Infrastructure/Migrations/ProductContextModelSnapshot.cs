@@ -37,6 +37,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("ProductId");
 
+<<<<<<< HEAD
                     b.ToTable("Products");
                 });
 
@@ -139,6 +140,9 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.RoleEntity", b =>
                 {
                     b.Navigation("Users");
+=======
+                    b.ToTable("Products", (string)null);
+>>>>>>> ProductsManagement
                 });
 #pragma warning restore 612, 618
         }

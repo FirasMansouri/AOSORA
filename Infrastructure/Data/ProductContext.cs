@@ -6,11 +6,11 @@ namespace Infrastructure.Data
 {
     public class ProductContext : DbContext
     {
-        public ProductContext(DbContextOptions <ProductContext> options): base(options) { }
+        public ProductContext(DbContextOptions<ProductContext> options) : base(options) { }
         public DbSet<ProductEntity> Products { get; set; }
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<RoleEntity> Roles { get; set; }
-
+        public DbSet<CategoryEntity> Categories { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserEntity>(b =>
@@ -32,6 +32,11 @@ namespace Infrastructure.Data
                 .WithMany(r=>r.Users)
                 .HasForeignKey(u => u.RoleId);
 
+
+            modelBuilder.Entity<ProductEntity>()
+                .HasOne<CategoryEntity>(p => p.Category)
+                .WithMany(c => c.Products)
+                .HasForeignKey(p => p.CategoryId);
         }
     }
 }
