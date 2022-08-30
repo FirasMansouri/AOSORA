@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using Domain.Entities;
+using Domain.Object_Values;
 
 namespace Application.User.Commands
 {
-    internal class RegisterCommand
-    {
-    }
+    public record class RegisterCommand
+    (   string name,
+        string email,
+        string password,
+        Address address
+        ) : IRequest<UserEntity>;
 }

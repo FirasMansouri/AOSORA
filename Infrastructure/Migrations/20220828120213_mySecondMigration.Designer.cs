@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20220817104536_mySecondMigration")]
+    [Migration("20220828120213_mySecondMigration")]
     partial class mySecondMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,13 +42,32 @@ namespace Infrastructure.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Domain.Entities.User", b =>
+            modelBuilder.Entity("Domain.Entities.RoleEntity", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("RoleId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleId"), 1L, 1);
+
+                    b.Property<string>("RoleName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RoleId");
+
+                    b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("Domain.Entities.UserEntity", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.Property<string>("email")
                         .ValueGeneratedOnAdd()
@@ -68,16 +87,24 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasDefaultValue("");
 
-                    b.HasKey("id");
+                    b.HasKey("UserId");
+
+                    b.HasIndex("RoleId");
 
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Entities.User", b =>
+            modelBuilder.Entity("Domain.Entities.UserEntity", b =>
                 {
+                    b.HasOne("Domain.Entities.RoleEntity", "role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.OwnsOne("Domain.Object_Values.Address", "address", b1 =>
                         {
-                            b1.Property<int>("Userid")
+                            b1.Property<int>("UserEntityUserId")
                                 .HasColumnType("int");
 
                             b1.Property<string>("City")
@@ -98,15 +125,22 @@ namespace Infrastructure.Migrations
                                 .HasColumnType("nvarchar(255)")
                                 .HasDefaultValue("");
 
-                            b1.HasKey("Userid");
+                            b1.HasKey("UserEntityUserId");
 
                             b1.ToTable("Users");
 
                             b1.WithOwner()
-                                .HasForeignKey("Userid");
+                                .HasForeignKey("UserEntityUserId");
                         });
 
                     b.Navigation("address");
+
+                    b.Navigation("role");
+                });
+
+            modelBuilder.Entity("Domain.Entities.RoleEntity", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }
