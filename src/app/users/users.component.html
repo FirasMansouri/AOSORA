@@ -1,0 +1,53 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                      Address
+                                    </th>
+                                    <!-- <th>
+                                      Role
+                                    </th> -->
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let user of users">
+                                          <td>
+                                              {{user.name}}
+                                          </td>
+                                          <td>
+                                              {{user.email}}
+                                          </td>
+                                          <td>
+                                              {{user.address.city}}, {{user.address.street}}, {{user.address.zipCode}}
+                                          </td>
+                                          <!-- <td>
+                                              {{user.role.name}}
+                                          </td> -->
+                                          <td>
+                                              <i class="material-icons">delete</i>
+                                              <i class="material-icons">edit</i>
+                                              <i class="material-icons">info</i>
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  

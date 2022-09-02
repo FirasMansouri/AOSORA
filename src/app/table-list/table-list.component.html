@@ -1,0 +1,70 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>
+                                      ID
+                                  </th>
+                                  <th>
+                                      Name
+                                  </th>
+                                  <th>
+                                      Description
+                                  </th>
+                                  <th>
+                                    Price
+                                  </th>
+                                  <th>
+                                    Discount
+                                  </th>
+                                  <th>
+                                    Quantity
+                                  </th>
+                                  <th>
+                                    Images
+                                  </th>
+                                  <th></th>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let product of products">
+                                        <td>
+                                            {{product.id}}
+                                        </td>
+                                        <td>
+                                            {{product.name}}
+                                        </td>
+                                        <td>
+                                            {{product.description}}
+                                        </td>
+                                        <td>
+                                            {{product.price}}
+                                        </td>
+                                        <td>
+                                            {{product.discount}}
+                                        </td>
+                                        <td>
+                                            {{product.quantity}}
+                                        </td>
+                                        <td>
+                                            {{product.images}}
+                                        </td>
+                                        <td>
+                                            <i class="material-icons">delete</i>
+                                            <i class="material-icons">edit</i>
+                                            <i class="material-icons">info</i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
