@@ -27,6 +27,18 @@ export class ProductsComponent implements OnDestroy, OnInit {
     }, ()=>{
     });
   }
+
+  deleteProduct(id:number){
+    this.productsApi.deleteProduct(id).subscribe(res=>{
+      console.log(res);
+      let index= this.products.findIndex((p)=>p.id==id);
+      this.products.splice(index, 1);
+    }, error =>{
+      console.log(error);
+    }, ()=>{
+    });
+  }
+
   ngOnDestroy(): void {
   }
 

@@ -8,13 +8,15 @@ import { environment } from 'environments/environment';
 })
 export class ProductsService {
 
-  products : Product[] = []; 
-
-
   constructor(private http: HttpClient) { }
 
   getProducts(){
-    return this.http.get<any>(environment.endpoints.product.getAll)
+    return this.http.get<Product[]>(environment.endpoints.product.getAll)
+  }
+
+  deleteProduct(id:number){
+    return this.http.delete<any>(environment.endpoints.product.delete+id);
+
   }
 
 }

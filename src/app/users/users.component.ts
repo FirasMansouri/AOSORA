@@ -15,10 +15,10 @@ export class UsersComponent implements OnDestroy, OnInit {
   constructor(private usersApi: UsersService) { }
 
   ngOnInit() {
-    this.getProducts();
+    this.getUsers();
   }
 
-  getProducts(){
+  getUsers(){
     this.usersApi.getUsers().subscribe(res =>{
       this.users=res;
       console.log(this.users);
@@ -27,6 +27,19 @@ export class UsersComponent implements OnDestroy, OnInit {
     }, ()=>{
     });
   }
+
+  deleteAdmin(id:number){
+    this.usersApi.deleteAdmin(id).subscribe(res=>{
+      console.log(res);
+      let index= this.users.findIndex((u)=>u.userId==id);
+      this.users.splice(index, 1);
+    }, error =>{
+      console.log(error);
+    }, ()=>{
+    });
+  }
+
+
   ngOnDestroy(): void {
   }
 

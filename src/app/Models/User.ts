@@ -1,10 +1,11 @@
 import { Address } from "./Address";
+import { Role } from "./Role";
 
 export class User{
-    id: number;
+    userId: number;
     name: string;
     email: string;
     password: string;
     address: Address;
-    role: string;
+    role: Role;
 }

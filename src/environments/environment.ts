@@ -6,19 +6,19 @@ export const environment = {
   endpoints :{
     product: {
       getAll :products+ "/GetAll",
-      post: products+"/Delete",
-      delete: products+"/Update",
+      post: products+"/Post",
+      delete: products+"/Delete?id=",
       get: products+"/Get",
-      update: products+"/Post"
+      update: products+"/Update"
     },
     user:{
       register:  users+"/register",
       login: users+"/login",
-      getAll :users+ "/getAll",
-      post: users+"/Admins/Delete",
-      delete: users+"/Admins/Update",
-      get: users+"/Admins/Get",
-      update: users+"/Admins/Post"
+      getAll :users+"/getAll",
+      post: users+"/Admins/post",
+      delete: users+"/Admins/delete?id=",
+      get: users+"/Admins/get",
+      update: users+"/Admins/Update"
     }
   }
 };

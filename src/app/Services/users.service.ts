@@ -8,13 +8,16 @@ import { environment } from 'environments/environment';
 })
 export class UsersService {
 
-  users : User[] = []; 
-
-
   constructor(private http: HttpClient) { }
 
   getUsers(){
-    return this.http.get<any>(environment.endpoints.user.getAll)
+    return this.http.get<User[]>(environment.endpoints.user.getAll)
   }
+
+  deleteAdmin(id:number){
+    return this.http.delete<any>(environment.endpoints.product.delete+id);
+
+  }
+
 
 }

@@ -16,9 +16,9 @@
                                     <th>
                                       Address
                                     </th>
-                                    <!-- <th>
+                                    <th>
                                       Role
-                                    </th> -->
+                                    </th>
                                     <th></th>
                                 </thead>
                                 <tbody>
@@ -32,13 +32,21 @@
                                           <td>
                                               {{user.address.city}}, {{user.address.street}}, {{user.address.zipCode}}
                                           </td>
-                                          <!-- <td>
-                                              {{user.role.name}}
-                                          </td> -->
                                           <td>
-                                              <i class="material-icons">delete</i>
-                                              <i class="material-icons">edit</i>
-                                              <i class="material-icons">info</i>
+                                              {{user.role.roleName}}
+                                          </td>
+                                          <td>
+                                            <div class="icons d-flex align-items-center">
+                                                <span class="icon inf">
+                                                    <i class="material-icons">info</i>
+                                                </span>
+                                                <span *ngIf="user.role.roleName=='ADMIN'" class="icon upd">
+                                                    <i class="material-icons">edit</i>
+                                                </span>
+                                                <span *ngIf="user.role.roleName=='ADMIN'" class="icon dlt">
+                                                    <i class="material-icons" (click)="deleteAdmin(user.userId)">delete</i>
+                                                </span>
+                                            </div>
                                           </td>
                                       </tr>
                                   </tbody>
