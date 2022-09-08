@@ -1,0 +1,41 @@
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    width: 100%;
+  }
+  
+  .product-image-thumbs {
+    align-items: stretch;
+    display: flex;
+    margin-top: 2rem;
+  }
+  
+  .product-image-thumb {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+    border-radius: 0.25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: 1rem;
+    max-width: 7rem;
+    padding: 0.5rem;
+  
+    img {
+        max-width: 100%;
+        height: auto;
+        -ms-flex-item-align: center;
+        align-self: center;
+    }
+  
+    &:hover {
+      opacity: .5;
+    }
+  }
+  
+  .product-share {
+    a {
+      margin-right: .5rem;
+    }
+  }

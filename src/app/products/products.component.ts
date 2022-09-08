@@ -18,6 +18,10 @@ export class ProductsComponent implements OnDestroy, OnInit {
     this.getProducts();
   }
 
+  sendProduct(product){
+    this.productsApi.sendProduct(product);
+  }
+
   getProducts(){
     this.productsApi.getProducts().subscribe(res =>{
       this.products=res;

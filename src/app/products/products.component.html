@@ -1,6 +1,11 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-2 offset-md-10">
+                <button class="btn" routerLink="/addProduct">New Product</button>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
@@ -42,10 +47,10 @@
                                               {{product.description}}
                                           </td>
                                           <td>
-                                              {{product.price}}
+                                              {{product.price}}DT
                                           </td>
                                           <td>
-                                              {{product.discount}}
+                                              {{product.discount}}%
                                           </td>
                                           <td>
                                               {{product.quantity}}
@@ -55,10 +60,10 @@
                                           </td>
                                           <td>
                                             <div class="icons d-flex align-items-center">
-                                                <span class="icon inf">
+                                                <span class="icon inf" routerLink="/productDetails" (click)="sendProduct(product)">
                                                     <i class="material-icons">info</i>
                                                 </span>
-                                                <span class="icon upd">
+                                                <span class="icon upd" routerLink="/updateProduct" (click)="sendProduct(product)">
                                                     <i class="material-icons">edit</i>
                                                 </span>
                                                 <span class="icon dlt">

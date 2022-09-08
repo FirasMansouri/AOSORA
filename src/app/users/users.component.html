@@ -1,6 +1,11 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-2 offset-md-10">
+                <button class="btn" routerLink="/addAdmin">New Admin</button>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
@@ -37,10 +42,10 @@
                                           </td>
                                           <td>
                                             <div class="icons d-flex align-items-center">
-                                                <span class="icon inf">
-                                                    <i class="material-icons">info</i>
+                                                <span class="icon inf" routerLink="/userDetails" (click)="sendUser(user)">
+                                                    <i class="material-icons" >info</i>
                                                 </span>
-                                                <span *ngIf="user.role.roleName=='ADMIN'" class="icon upd">
+                                                <span *ngIf="user.role.roleName=='ADMIN'" class="icon upd" routerLink="/updateAdmin" (click)="sendUser(user)">
                                                     <i class="material-icons">edit</i>
                                                 </span>
                                                 <span *ngIf="user.role.roleName=='ADMIN'" class="icon dlt">

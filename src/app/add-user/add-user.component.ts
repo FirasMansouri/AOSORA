@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormControlName, FormGroup } from '@angular/forms';
+import { Address } from 'app/Models/Address';
+import { User } from 'app/Models/User';
+import { UsersService } from 'app/Services/users.service';
 
 @Component({
   selector: 'app-add-user',
@@ -7,9 +11,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddUserComponent implements OnInit {
 
-  constructor() { }
+  addUserForm:FormGroup;
+  user:User=new User();
+  address:Address= new Address();
+
+  constructor(private UsersApi:UsersService) { }
 
   ngOnInit(): void {
+    this.addUserForm= new FormGroup({
+      name:new FormControl(''),
+      email: new FormControl(''),
+      password: new FormControl(''),
+      Address: new FormGroup({
+        city: new FormControl(''),
+        street: new FormControl(''),
+        postalCode: new FormControl('')
+      })
+    })
+  }
+
+  onSubmit(){
+    this.UsersApi.addAdmin(this.addUserForm.value).subscribe(data=>{
+      console.log(data);
+    },error=>{
+      console.error(error);
+    })
+    
   }
 
 }

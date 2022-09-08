@@ -18,6 +18,10 @@ export class UsersComponent implements OnDestroy, OnInit {
     this.getUsers();
   }
 
+  sendUser(user){
+    this.usersApi.sendUser(user);
+  }
+
   getUsers(){
     this.usersApi.getUsers().subscribe(res =>{
       this.users=res;

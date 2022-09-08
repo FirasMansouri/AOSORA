@@ -1,3 +1,5 @@
+import { category } from "./Category";
+
 export class Product{
     id : number;
     name: string;
@@ -8,4 +10,5 @@ export class Product{
     color: string;
     images: string;
     isavailable: boolean;
+    category: category;
 }

@@ -18,7 +18,7 @@ export const environment = {
       post: users+"/Admins/post",
       delete: users+"/Admins/delete?id=",
       get: users+"/Admins/get",
-      update: users+"/Admins/Update"
+      update: users+"/Admins/put"
     }
   }
 };

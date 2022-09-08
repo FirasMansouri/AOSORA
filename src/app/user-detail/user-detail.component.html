@@ -1,1 +1,48 @@
-<p>user-detail works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span class="label label-default"><strong>name:</strong> </span>
+                                </div>
+                                <div class="col-md-10">
+                                    <span class="label label-default">{{user.name}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span class="label label-default"><strong>email:</strong></span>
+                                </div>
+                                <div class="col-md-10">
+                                    <span class="label label-default">{{user.email}}</span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span class="label label-default"><strong>Address:</strong></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <span class="label label-default"><strong>city:</strong> {{user.address.city}}</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="label label-default"><strong>street: </strong>{{user.address.street}}</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="label label-default"><strong>postal code:</strong> {{user.address.zipCode}}</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
