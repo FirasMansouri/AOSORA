@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   registerUrl: string = 'https://localhost:7256/User/register';
   emailExistsUrl: string = 'https://localhost:7256/User/Email?email=';
 
-  constructor(private http: HttpClient) { }
+  constructor(private usersApi: UsersService) { }
 
   ngOnInit(): void {
     this.registerForm= new FormGroup({
@@ -28,16 +28,16 @@ export class RegisterComponent implements OnInit {
 
   onEmailBlur(email:string){
 
-    var getEmailUrl = this.emailExistsUrl+email;
-    this.http.get<any>(getEmailUrl).subscribe(res =>{
-      console.log(res);
-      if (res===true) {
-        this.registerForm.controls.Email.status='INVALID';
-      }
-    }, error =>{
-      console.log(error);
-    }, ()=>{
-    });
+    // var getEmailUrl = this.emailExistsUrl+email;
+    // this.http.get<any>(getEmailUrl).subscribe(res =>{
+    //   console.log(res);
+    //   if (res===true) {
+    //     this.registerForm.controls.Email.status='INVALID';
+    //   }
+    // }, error =>{
+    //   console.log(error);
+    // }, ()=>{
+    // });
 
     
   }
@@ -56,13 +56,11 @@ export class RegisterComponent implements OnInit {
       }
     }
 
-    this.http.post<any>(this.registerUrl, body).subscribe(res =>{
-      this.registerForm.reset();
-      console.log('success');
+    this.usersApi.register(body).subscribe(res =>{
+      console.log(res);
     }, error =>{
       console.log(error);
     }, ()=>{
-      console.log('completed');
     });
 
   }
