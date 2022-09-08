@@ -17,6 +17,8 @@ import { RegisterComponent } from './appComponents/register/register.component';
 import { LoginComponent } from './appComponents/login/login.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductsPageComponent } from './products-page/products-page.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -34,6 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     MainComponent,
     RegisterComponent,
     LoginComponent,
+    ProductsPageComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
