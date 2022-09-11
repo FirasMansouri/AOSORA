@@ -16,9 +16,10 @@ import { MainComponent } from './appComponents/main/main.component';
 import { RegisterComponent } from './appComponents/register/register.component';
 import { LoginComponent } from './appComponents/login/login.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProductsPageComponent } from './products-page/products-page.component';
 import { CartComponent } from './cart/cart.component';
+import { AuthInterceptor } from './Services/auth-interceptor';
 
 
 
@@ -47,7 +48,13 @@ import { CartComponent } from './cart/cart.component';
     HttpClientModule
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

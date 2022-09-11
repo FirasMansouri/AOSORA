@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  loginUrl: string = 'https://localhost:7256/User/login'
-  emailExistsUrl: string = 'https://localhost:7256/User/Email?email=';
+  loginUrl: string = 'https://localhost:7256/Users/login'
+  emailExistsUrl: string = 'https://localhost:7256/Users/Email?email=';
 
   constructor(private http: HttpClient) { }
 
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(loginForm:any){
 
-    console.log(loginForm);
+    // console.log(loginForm);
     var email= loginForm.controls.Email.value;
     var password= loginForm.controls.Password.value;
     this.http.get<any>(this.loginUrl+"?email="+email+"&password="+password).subscribe(res =>{
@@ -46,6 +46,10 @@ export class LoginComponent implements OnInit {
         console.log('icorrect password')
       }else{
         console.log('success');
+        let t: string = res.token;
+        // console.log(t);
+        localStorage.setItem("token",t)
+        console.log("token from local storage: ",localStorage.getItem("token"));
       }
     }, error =>{
       console.log(error);
