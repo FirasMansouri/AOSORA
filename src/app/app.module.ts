@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+// import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
+    AdminLayoutComponent
+    // UploadComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,7 +13,7 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
-                                        ID
+                                        Image
                                     </th>
                                     <th>
                                         Name
@@ -30,15 +30,12 @@
                                     <th>
                                       Quantity
                                     </th>
-                                    <th>
-                                      Images
-                                    </th>
                                     <th></th>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let product of products">
                                           <td>
-                                              {{product.id}}
+                                            <img [src]="ShowImage(product.images)" width="60px" height="60px">
                                           </td>
                                           <td>
                                               {{product.name}}
@@ -54,9 +51,6 @@
                                           </td>
                                           <td>
                                               {{product.quantity}}
-                                          </td>
-                                          <td>
-                                              {{product.images}}
                                           </td>
                                           <td>
                                             <div class="icons d-flex align-items-center">

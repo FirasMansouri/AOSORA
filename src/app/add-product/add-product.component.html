@@ -74,28 +74,77 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-md-12">
                                   <mat-form-field class="example-full-width">
                                     <input matInput type="file">
                                    </mat-form-field>
                                 </div>
+                            </div> -->
+                            <!-- <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+                            <img [src]="createImgPath(imgpath)" alt="profile picture" style="width:60px; height:60px;"> -->
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="imgContainer">
+                                  <div class="imgBox">
+                                    <img [src]="ShowImage(FirstImagePath)">
+                                  </div>
+                                  <input 
+                                  type="file" 
+                                  placeholder="Choose file" 
+                                  style="display:none;"
+                                  #file1
+                                  (change)="uploadFile1(file1.files)" 
+                                  >
+                                  <button type="button" class="uploadBtn" (click)="file1.click()">Upload File</button>
+                                </div>
+                              </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput type="file">
-                                   </mat-form-field>
+                                  <div class="minContainer">
+                                    <div class="imgBox">
+                                      <img [src]="ShowImage(SecondImagePath)" >
+                                    </div>
+                                    <input 
+                                    type="file" 
+                                    placeholder="Choose file" 
+                                    style="display:none;"
+                                    #file2
+                                    (change)="uploadFile2(file2.files)" 
+                                    >
+                                    <button type="button" class="uploadBtn" (click)="file2.click()">Upload File</button>
+                                  </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                      <input matInput type="file">
-                                     </mat-form-field>
+                                  <div class="minContainer">
+                                    <div class="imgBox">
+                                      <img [src]="ShowImage(ThirdImagePath)" >
+                                    </div>
+                                    <input 
+                                    type="file" 
+                                    placeholder="Choose file" 
+                                    style="display:none;"
+                                    #file3
+                                    (change)="uploadFile3(file3.files)" 
+                                    >
+                                    <button type="button" class="uploadBtn" (click)="file3.click()">Upload File</button>
+                                  </div>
                                   </div>
                                   <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                      <input matInput type="file">
-                                     </mat-form-field>
+                                    <div class="minContainer">
+                                      <div class="imgBox">
+                                        <img [src]="ShowImage(FourthImagePath)" >
+                                      </div>
+                                      <input 
+                                      type="file" 
+                                      placeholder="Choose file" 
+                                      style="display:none;"
+                                      #file4
+                                      (change)="uploadFile4(file4.files)" 
+                                      >
+                                      <button type="button" class="uploadBtn" (click)="file4.click()">Upload File</button>
+                                    </div>
                                   </div>
                             </div>
                             <button mat-raised-button type="submit" class="btn btn-danger pull-right">Add Product</button>

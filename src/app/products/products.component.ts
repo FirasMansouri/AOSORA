@@ -10,7 +10,9 @@ import { ProductsService } from 'app/Services/products.service';
 export class ProductsComponent implements OnDestroy, OnInit {
 
   products : Product[] = [];
-
+  ImagesPathArray: string[]= ["","","",""];
+  ImagesPathString:string="";
+  FirstImagePath:string="";
 
   constructor(private productsApi: ProductsService) { }
 
@@ -41,6 +43,18 @@ export class ProductsComponent implements OnDestroy, OnInit {
       console.log(error);
     }, ()=>{
     });
+  }
+
+  ShowImage(images){
+    console.log(images);
+    if (images!=null && images!=="") {
+      this.ImagesPathArray=images.split(",");
+      console.log(this.ImagesPathArray);
+      this.FirstImagePath=this.ImagesPathArray[0];
+      // à vérifier
+      return `https://localhost:7256/${this.FirstImagePath}`;
+    }
+    
   }
 
   ngOnDestroy(): void {

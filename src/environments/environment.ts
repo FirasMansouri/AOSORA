@@ -1,6 +1,6 @@
 const users = "https://localhost:7256/Users";
 const products = "https://localhost:7256/Products";
-
+const files = "https://localhost:7256/Upload";
 export const environment = {
   production: false,
   endpoints :{
@@ -19,6 +19,10 @@ export const environment = {
       delete: users+"/Admins/delete?id=",
       get: users+"/Admins/get",
       update: users+"/Admins/put"
+    },
+    file:{
+      UploadFile: files+"/UploadFile",
+      getFile:files+"/"
     }
   }
 };
