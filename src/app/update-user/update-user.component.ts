@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Address } from 'app/Models/Address';
 import { User } from 'app/Models/User';
 import { UsersService } from 'app/Services/users.service';
@@ -15,7 +16,7 @@ export class UpdateUserComponent implements OnInit {
   user:User=new User();
   address:Address= new Address();
 
-  constructor(private usersApi: UsersService) { }
+  constructor(private usersApi: UsersService, private router:Router) { }
 
   ngOnInit(): void {
     this.usersApi.receiveUser().subscribe((data)=>{
@@ -38,6 +39,11 @@ export class UpdateUserComponent implements OnInit {
       console.log(data);
     },error=>{
       console.error(error);
+    },
+    ()=>{
+      alert("user updated succefully");
+      this.updateUserForm.reset();
+      this.router.navigate(["users"]);
     })
 
   }

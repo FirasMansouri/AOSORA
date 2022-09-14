@@ -1,6 +1,7 @@
 import { HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { category } from 'app/Models/Category';
 import { Product } from 'app/Models/Product';
 import { FilesService } from 'app/Services/files.service';
@@ -23,7 +24,7 @@ export class UpdateProductComponent implements OnInit {
   ThirdImagePath:string;
   FourthImagePath:string;
 
-  constructor(private productsApi: ProductsService, private filesApi:FilesService) { }
+  constructor(private productsApi: ProductsService, private filesApi:FilesService, private router:Router) { }
 
   ngOnInit(): void {
     this.productsApi.receiveProduct().subscribe((data)=>{
@@ -145,7 +146,9 @@ export class UpdateProductComponent implements OnInit {
     },error=>{
       console.error(error);
     },()=>{
-      alert("product updated succefully !!")
+      alert("product updated succefully");
+      this.updateProductForm.reset();
+      this.router.navigate(["products"]);
     })
 
   }
