@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../Models/Product';
 import { CartService } from '../Services/cart.service';
@@ -12,6 +13,8 @@ export class CartComponent implements OnInit {
   cartItems: Product[]= [];
   cartTotal: number=0;
   Shipping:number=30.00;
+  ImagesPathArray: string[]= ["","","",""];
+  FirstImagePath:string="";
 
   constructor(private cartService:CartService) { }
 
@@ -45,5 +48,18 @@ export class CartComponent implements OnInit {
   removeCart(){
     this.cartService.removeAllCart();
   }
+
+  sendOrder(){
+    this.cartService.postOrder();
+  }
+
+  ShowImage(images:any){
+    if (images!=null && images!=="") {
+      this.ImagesPathArray=images.split(",");
+      this.FirstImagePath=this.ImagesPathArray[0];
+    }
+    return `https://localhost:7256/${this.FirstImagePath}`;
+  }
+
 
 }

@@ -28,7 +28,7 @@
                         <tr *ngFor="let product of cartItems">
                             <td class="product-thumbnail">
                                 <a href="#">
-                                    <img src="assets/img/products-img1.jpg" alt="item">
+                                    <img [src]="ShowImage(product.images)" alt="item">
                                 </a>
                             </td>
 
@@ -59,12 +59,12 @@
 
             <div class="cart-buttons">
                 <div class="row align-items-center">
-                    <div class="col-lg-7 col-sm-7 col-md-7">
+                    <!-- <div class="col-lg-7 col-sm-7 col-md-7">
                         <div class="shopping-coupon-code">
                             <input type="text" class="form-control" placeholder="Coupon code" name="coupon-code" id="coupon-code">
                             <button type="submit">Apply Coupon</button>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="col-lg-5 col-sm-5 col-md-5 text-right">
                         <span href="#" class="default-btn" (click)="removeCart()">Update Cart</span>
@@ -79,7 +79,7 @@
                     <li>Shipping <span>{{Shipping}} DT</span></li>
                     <li>Total <span>{{cartTotal + Shipping}} DT</span></li>
                 </ul>
-                <a href="#" class="default-btn">Proceed to Checkout</a>
+                <a class="default-btn" (click)="sendOrder()">Place Order</a>
             </div>
         </form>
     </div>

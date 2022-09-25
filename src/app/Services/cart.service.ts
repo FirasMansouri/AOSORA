@@ -1,5 +1,7 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Product } from '../Models/Product';
 
 @Injectable({
@@ -9,8 +11,9 @@ export class CartService {
 
   cartItems : Product[]= [];
   cartSubject = new BehaviorSubject<any>([]);
+  orderList: any[]=[];
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   getCartItems(){
     return this.cartSubject.asObservable();
@@ -74,6 +77,30 @@ export class CartService {
       cartTotal+=p.totalPrice;
     })
     return cartTotal;
+  }
+
+  postOrder(){
+    this.cartItems.forEach((element)=>{
+      const p= {
+        ProductId:element.id,
+        Quantity: element.cartQuantity
+      }
+      this.orderList.push(p);
+    })
+    console.log('cart items: ', this.cartItems);
+    console.log('order list: ', this.orderList);
+    var params=new HttpParams();
+    if (localStorage.CONNECTED_USER !=null){
+      const userId=(JSON.parse(localStorage.CONNECTED_USER)).UserId;
+      params= params.set("userId", Number(userId));
+    }else{
+      const userId=0;
+      params=params.set("userId", userId);
+    }
+    
+    this.http.post(environment.endpoints.order.post,this.orderList, {params}).subscribe((data)=>{
+      console.log(data);
+    })
   }
 
 }

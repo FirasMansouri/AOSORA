@@ -11,7 +11,9 @@ import { ProductsService } from '../Services/products.service';
 export class ProductsPageComponent implements OnInit {
   
   products : Product[] = [];
-  
+  ImagesPathArray: string[]= ["","","",""];
+  FirstImagePath:string="";
+
   constructor(private productsApi: ProductsService, private cartService:CartService) { }
 
   ngOnInit() {
@@ -30,6 +32,14 @@ export class ProductsPageComponent implements OnInit {
 
   addToCart(product:Product){
     this.cartService.addCartItem(product);
+  }
+
+  ShowImage(images:any){
+    if (images!=null && images!=="") {
+      this.ImagesPathArray=images.split(",");
+      this.FirstImagePath=this.ImagesPathArray[0];
+    }
+    return `https://localhost:7256/${this.FirstImagePath}`;
   }
 
   ngOnDestroy(): void {
