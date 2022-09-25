@@ -1,0 +1,146 @@
+<div class="main-content">
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-primary">
+                        Order: 
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>order id:</strong> {{order.id}}
+                                        </td>
+                                        <td>
+                                            <strong>order date:</strong> {{order.date | date: "medium" }} 
+                                        </td>
+                                        <td>
+                                            <strong>order Total:</strong> {{orderTotal(order)}} DT
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-primary">
+                        Customer Details: 
+                      </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span class="label label-default"><strong>name:</strong> </span>
+                                </div>
+                                <div class="col-md-10">
+                                    <span class="label label-default">{{order.user.name}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span class="label label-default"><strong>email:</strong></span>
+                                </div>
+                                <div class="col-md-10">
+                                    <span class="label label-default">{{order.user.email}}</span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span class="label label-default"><strong>Address:</strong></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <span class="label label-default"><strong>city:</strong> {{order.user.address.zipCode}}</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="label label-default"><strong>street: </strong>{{order.user.address.zipCode}}</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="label label-default"><strong>postal code:</strong> {{order.user.address.zipCode}}</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-primary">
+                        List of Products: 
+                      </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Image
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                      Price
+                                    </th>
+                                    <th>
+                                      Quantity
+                                    </th>
+                                    <th>
+                                        Discount
+                                    </th>
+                                    <th>
+                                        Total
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let op of order.orderProducts">
+                                        <td>
+                                            <img [src]="ShowImage(op.product.images)" width="60px" height="60px">
+                                        </td>
+                                        <td>
+                                            {{op.product.name}}
+                                        </td>
+                                        <td>
+                                            {{op.product.price}} DT
+                                        </td>
+                                        <td>
+                                            {{op.quantity}}
+                                        </td>
+                                        <td>
+                                            {{op.product.discount}}%
+                                        </td>
+                                        <td>
+                                            {{(op.product.price - op.product.price/100*op.product.discount) * op.quantity}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+  

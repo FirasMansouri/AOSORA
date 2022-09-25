@@ -8,7 +8,6 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
-// import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   imports: [
@@ -24,7 +23,6 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent
-    // UploadComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

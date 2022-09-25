@@ -12,6 +12,7 @@ import { UserDetailComponent } from 'app/user-detail/user-detail.component';
 import { UpdateUserComponent } from 'app/update-user/update-user.component';
 import { AddProductComponent } from 'app/add-product/add-product.component';
 import { AddUserComponent } from 'app/add-user/add-user.component';
+import { OrderDetailsComponent } from 'app/order-details/order-details.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -59,6 +60,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'users',     component: UsersComponent },
     { path: 'products',     component: ProductsComponent },
     { path: 'orders',           component: OrdersComponent },
+    { path: 'orderDetails',          component: OrderDetailsComponent },
     { path: 'productDetails',          component: ProductDetailsComponent },
     { path: 'addProduct',          component: AddProductComponent },
     { path: 'updateProduct',  component:  UpdateProductComponent},

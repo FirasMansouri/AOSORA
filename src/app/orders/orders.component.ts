@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Product } from 'app/Models/Product';
-import { ProductsService } from 'app/Services/products.service';
+import { Order } from 'app/Models/Order';
+import { OrdersService } from 'app/Services/orders.service';
 
 @Component({
   selector: 'app-orders',
@@ -9,24 +9,37 @@ import { ProductsService } from 'app/Services/products.service';
 })
 export class OrdersComponent implements OnDestroy, OnInit {
 
-  products : Product[] = [];
+  orders : Order[] = [];
 
 
-  constructor(private productsApi: ProductsService) { }
+  constructor(private ordersApi: OrdersService) { }
 
   ngOnInit() {
-    this.getProducts();
+    this.getOrders();
   }
 
-  getProducts(){
-    this.productsApi.getProducts().subscribe(res =>{
-      this.products=res;
-      console.log(this.products);
+  getOrders(){
+    this.ordersApi.getOrders().subscribe(res =>{
+      this.orders=res
     }, error =>{
       console.log(error);
     }, ()=>{
     });
   }
+
+  orderTotal(order:Order){
+    let total:number=0;
+    order.orderProducts.forEach(element => {
+      total = total + (element.product.price-element.product.price/100*element.product.discount)*element.quantity;
+    });
+    return total;
+  }
+
+  sendOrder(order){
+    this.ordersApi.sendOrder(order);
+  }
+
+
   ngOnDestroy(): void {
   }
 

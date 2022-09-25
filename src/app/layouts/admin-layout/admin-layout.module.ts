@@ -21,6 +21,7 @@ import { UserDetailComponent } from 'app/user-detail/user-detail.component';
 import { UsersComponent } from 'app/users/users.component';
 import { OrdersComponent } from 'app/orders/orders.component';
 import { UpdateUserComponent } from 'app/update-user/update-user.component';
+import { OrderDetailsComponent } from 'app/order-details/order-details.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { UpdateUserComponent } from 'app/update-user/update-user.component';
     OrdersComponent,
     UpdateUserComponent,
     AddProductComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    OrderDetailsComponent
   ]
 })
 
