@@ -1,4 +1,5 @@
 ﻿using Domain.Object_Values;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,8 +17,9 @@ namespace Domain.Entities
 
         [ForeignKey("RoleId")]
         public int RoleId { get; set; }
-        public RoleEntity role { get; set; }   
+        public virtual RoleEntity role { get; set; }   
 
+        public virtual ICollection<OrderEntity> orders { get; set; }
 
     }
 

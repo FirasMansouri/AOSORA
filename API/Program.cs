@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Infrastructure.Utils;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -23,6 +25,7 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
     builder.Services.AddTransient<IProductRepository, ProductRepository>();
     builder.Services.AddTransient<IUserRepository, UserRepository>();
+    builder.Services.AddTransient<IOrderRepository, OrderRepository>();
     builder.Services.AddTransient<IUtils, Utils>();
     builder.Services.AddRazorPages();
     builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -38,18 +41,37 @@ var builder = WebApplication.CreateBuilder(args);
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
         };
     });
+    builder.Services.Configure<FormOptions>(o =>
+    {
+        o.ValueLengthLimit = int.MaxValue;
+        o.MultipartBodyLengthLimit = int.MaxValue;
+        o.MemoryBufferThreshold = int.MaxValue;
+    });
 }
 
 
 var app = builder.Build();
 {
-    app.UseCors(x => x
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader());
+    //app.UseCors(x => x
+    //        .AllowAnyOrigin()
+    //        .AllowAnyMethod()
+    //        .AllowAnyHeader());
+
+    app.UseCors(builder =>
+                        builder.AllowAnyMethod()
+                       .AllowAnyHeader()
+                       .SetIsOriginAllowed(origin => true)
+                       .AllowCredentials()
+                      );
+
 
     app.UseHttpsRedirection();
     app.UseStaticFiles();
+    app.UseStaticFiles(new StaticFileOptions()
+    {
+        FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+        RequestPath = new PathString("/Resources")
+    });
     app.UseRouting();
     app.UseAuthentication();
     app.UseAuthorization();

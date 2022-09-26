@@ -35,26 +35,31 @@ namespace Infrastructure.Repositories
             string encodedData = _utils.EncryptPwd(password);
 
             var user = _context.Set<UserEntity>().Include(user=>user.role).FirstOrDefault(u => u.email == email);
-            if (user==null)
+            if (user == null)
             {
                 response = "email does not exist";
             }
-            else if(user.password != encodedData)
+            else if (user.password != encodedData)
             {
                 response = "incorrect password";
             }
             else
             {
                 user.password = "";
-                string token= _utils.GenerateToken(user);
+                string token = _utils.GenerateToken(user);
                 JsonSerializerOptions options = new()
                 {
                     ReferenceHandler = ReferenceHandler.IgnoreCycles,
                     WriteIndented = true
                 };
                 string jsonResult = JsonSerializer.Serialize(user, options);
-                response = jsonResult+","+token;
+                response = jsonResult + "," + token;
+
+                //string t = "{\"token\":\"" + token + "\"}";
+                string t = "[{\"token\":\"" + token + "\"},"+jsonResult + "]";
+                return t;
             }
+
             return response;
 
         }
@@ -82,33 +87,36 @@ namespace Infrastructure.Repositories
 
         }
 
-        public async Task<string> AddAdmin(UserEntity entity)
+        public async Task<int> AddAdmin(UserEntity entity)
         {
             string encodedData = _utils.EncryptPwd(entity.password);
 
             var role = _context.Roles.Where(r => r.RoleName == "ADMIN").FirstOrDefault();
 
-            var newUser = new UserEntity
-            {
-                email = entity.email,
-                password = encodedData,
-                address = entity.address,
-                name = entity.name,
-                role = role
-            };
+            //var newUser = new UserEntity
+            //{
+            //    email = entity.email,
+            //    password = encodedData,
+            //    address = entity.address,
+            //    name = entity.name,
+            //    role = role
+            //};
+            entity.password = encodedData;
+            entity.role = role;
 
-            await _context.Set<UserEntity>().AddAsync(newUser);
+            await _context.Users.AddAsync(entity);
             _context.SaveChanges();
 
-            newUser.password = "";
-            JsonSerializerOptions options = new()
-            {
-                ReferenceHandler = ReferenceHandler.IgnoreCycles,
-                WriteIndented = true
-            };
-            string jsonResult = JsonSerializer.Serialize(newUser, options);
+            //entity.password = "";
+            //JsonSerializerOptions options = new()
+            //{
+            //    ReferenceHandler = ReferenceHandler.IgnoreCycles,
+            //    WriteIndented = true
+            //};
+            //string jsonResult = JsonSerializer.Serialize(newUser, options);
 
-            return jsonResult;
+            //return jsonResult;
+            return entity.UserId;
         }
 
         public async Task<bool> DeleteAdmin(int id)
@@ -129,10 +137,11 @@ namespace Infrastructure.Repositories
 
         public async Task<UserEntity> UpdateAdmin(UserEntity entity)
         {
-            UserEntity userToUpdate = _context.Set<UserEntity>().Where(e=>e.email == entity.email).FirstOrDefault();    
+            UserEntity userToUpdate = _context.Set<UserEntity>().Where(e=>e.UserId == entity.UserId).FirstOrDefault();    
             if(userToUpdate != null)
             {
                 string encodedData = _utils.EncryptPwd(entity.password);
+                userToUpdate.name = entity.name;
                 userToUpdate.email = entity.email;
                 userToUpdate.password = encodedData;
                 userToUpdate.address = entity.address;
@@ -164,17 +173,13 @@ namespace Infrastructure.Repositories
 
         public async Task<List<UserEntity>> GetAllUsers()
         {
-            List<UserEntity> users = new List<UserEntity>();
-            List<UserEntity> list= _context.Set<UserEntity>().ToList();
-            foreach (UserEntity user in list)
+            List<UserEntity> list = _context.Users.AsNoTracking().Include(u => u.role).ToList();
+            foreach(UserEntity u in list)
             {
-                UserEntity u= new UserEntity();
-                u.name = user.name;
-                u.email = user.email;
-                u.address = user.address;
-                users.Add(u);
+                u.role.Users = null;
+                u.password = _utils.DecryptPwd(u.password);
             }
-            return users;
+            return list;
         }
     }
 }

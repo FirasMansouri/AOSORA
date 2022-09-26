@@ -17,6 +17,7 @@ namespace Application.User.Commands
         public Task<UserEntity> Handle(UpdateAdminCommand request, CancellationToken cancellationToken)
         {
             UserEntity user= new UserEntity();
+            user.UserId = request.id;
             user.name = request.name;
             user.email = request.email;
             user.password = request.password;

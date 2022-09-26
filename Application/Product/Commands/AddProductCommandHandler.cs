@@ -19,8 +19,15 @@ namespace Application.Product.Commands
             {
                 Id = request.Id,
                 Name = request.Name,
-                //Category = request.Category;
-            };
+                Description = request.Description,
+                Price = request.Price,
+                Discount = request.Discount,
+                Quantity = request.Quantity,
+                Color = request.Color,
+                Images = request.Images,
+                IsAvailable = request.IsAvailable,
+                Category = request.Category
+        };
 
             return _productRepository.AddProduct(p);
         }

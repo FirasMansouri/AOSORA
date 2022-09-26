@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.User.Commands
 {
-    public class AddAdminCommandHandler : IRequestHandler<AddAdminCommand, string>
+    public class AddAdminCommandHandler : IRequestHandler<AddAdminCommand, int>
     {
         private readonly IUserRepository _userRepository;
         public AddAdminCommandHandler(IUserRepository userRepository)
@@ -15,7 +15,7 @@ namespace Application.User.Commands
             _userRepository = userRepository;
         }
 
-        public Task<string> Handle(AddAdminCommand request, CancellationToken cancellationToken)
+        public Task<int> Handle(AddAdminCommand request, CancellationToken cancellationToken)
         {
             UserEntity user = new UserEntity();
             user.name = request.name;

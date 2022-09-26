@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
@@ -16,10 +18,14 @@ namespace Domain.Entities
         public string Color { get; set; }
         public string Images { get; set; }
         public bool IsAvailable { get; set; }
+        public DateTime AddDate { get; set; }
+        public DateTime UpdateDate { get; set; }    
 
         [ForeignKey("CategoryId")]
         public int CategoryId { get; set; }
         public CategoryEntity Category { get; set; }
+
+        public virtual ICollection<OrderProductEntity> orderProducts { get; set; }
     }
 
 }

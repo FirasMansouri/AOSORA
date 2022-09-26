@@ -11,6 +11,7 @@ using Application.IRepositories;
 
 namespace API.Controllers
 {
+    //[Authorize(Roles = "MEMBER,ADMIN,SUPER-ADMIN")]
     [Route("[controller]")]
     [ApiController]
     public class UsersController : Controller
@@ -55,7 +56,7 @@ namespace API.Controllers
         //admins management
         [Route("Admins/post")]
         [HttpPost]
-        public async Task<ActionResult<string>> AddAdmin([FromBody] UserEntity request)
+        public async Task<ActionResult<int>> AddAdmin([FromBody] UserEntity request)
         {
             var ad = new Address(request.address.City, request.address.Street, request.address.ZipCode);
             var command = new AddAdminCommand(request.name, request.email, request.password, ad);
@@ -81,24 +82,17 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        [Route("Admins/post")]
-        [HttpGet]
-        public async Task<ActionResult<UserEntity>> UpdateAdmin(int id)
-        {
-            return Ok();
-        }
-
         [Route("Admins/put")]
         [HttpPut]
         public async Task<ActionResult<UserEntity>> UpdateAdmin([FromBody] UserEntity request)
         {
             var ad = new Address(request.address.City, request.address.Street, request.address.ZipCode);
-            var command = new UpdateAdminCommand(request.name, request.email, request.password, ad);
+            var command = new UpdateAdminCommand(request.UserId,request.name, request.email, request.password, ad);
             var result = await _mediator.Send(command);
             return Ok(result);
         }
 
-        [Route("Admins/getAll")]
+        [Route("getAll")]
         [HttpGet]
         public async Task<ActionResult<List<UserEntity>>> ListUsers()
         {

@@ -1,7 +1,7 @@
-﻿using Domain.Entities;
-using Application.IRepositories.Base;
+﻿using Application.IRepositories.Base;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Domain.Entities;
 
 namespace Application.IRepositories
 {
@@ -9,6 +9,6 @@ namespace Application.IRepositories
     {
         Task<string> AddProduct(ProductEntity product);
         Task<List<ProductEntity>> GetAllProducts();
-        Task<ProductEntity> UpdateProduct(ProductEntity product);
+        Task<string> UpdateProduct(ProductEntity product);
     }
 }

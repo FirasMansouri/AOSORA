@@ -6,6 +6,7 @@ namespace Application.User.Commands
 {
     public record class UpdateAdminCommand
     (
+        int id,
         string name,
         string email,
         string password,

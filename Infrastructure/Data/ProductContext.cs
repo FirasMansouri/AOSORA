@@ -11,6 +11,9 @@ namespace Infrastructure.Data
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<RoleEntity> Roles { get; set; }
         public DbSet<CategoryEntity> Categories { get; set; }
+        public DbSet<OrderEntity> Orders { get; set; }
+        public DbSet<OrderProductEntity> OrderProducts { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserEntity>(b =>
@@ -37,6 +40,24 @@ namespace Infrastructure.Data
                 .HasOne<CategoryEntity>(p => p.Category)
                 .WithMany(c => c.Products)
                 .HasForeignKey(p => p.CategoryId);
+
+            modelBuilder.Entity<OrderEntity>()
+                .HasOne<UserEntity>(o => o.User)
+                .WithMany(u => u.orders)
+                .HasForeignKey(o => o.UserId);
+
+            modelBuilder.Entity<OrderProductEntity>()
+                .HasKey(op => new { op.OrderId, op.ProductId });
+
+            modelBuilder.Entity<OrderProductEntity>()
+                .HasOne(op => op.order)
+                .WithMany(o => o.orderProducts)
+                .HasForeignKey(op => op.OrderId);
+
+            modelBuilder.Entity<OrderProductEntity>()
+                .HasOne(op => op.product)
+                .WithMany(p=>p.orderProducts)
+                .HasForeignKey(op => op.ProductId);
         }
     }
 }

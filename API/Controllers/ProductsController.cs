@@ -11,11 +11,11 @@ namespace API.Controllers
     [Produces("application/json")]
     [Route("[controller]")]
     [ApiController]
-    public class ProductController: ControllerBase
+    public class ProductsController: ControllerBase
     {
         private readonly IMediator _mediator;
         private readonly IProductRepository _productRepository;
-        public ProductController(IMediator mediator, IProductRepository productRepository)
+        public ProductsController(IMediator mediator, IProductRepository productRepository)
         {
             _mediator = mediator;
             _productRepository = productRepository;

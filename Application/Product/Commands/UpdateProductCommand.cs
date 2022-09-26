@@ -15,5 +15,5 @@ namespace Application.Product.Commands
         string Images,
         bool IsAvailable,
         CategoryEntity Category
-    ): IRequest<ProductEntity>;
+    ): IRequest<string>;
 }
