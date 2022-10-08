@@ -1,0 +1,163 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form [formGroup]="addTeamForm" (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="imgContainer" (click)="image.click()">
+                                      <div class="imgBox">
+                                        <img [src]="ShowImage(ImagePath)">
+                                      </div>
+                                      <input 
+                                      type="file" 
+                                      placeholder="Choose file" 
+                                      style="display:none;"
+                                      #image
+                                      (change)="uploadImage(image.files)" 
+                                      >
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input 
+                                      matInput
+                                      type="text"
+                                      placeholder="Team Name"
+                                      formControlName="name" 
+                                      >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                      <textarea 
+                                      matInput
+                                      type="text"
+                                      placeholder="About Team"
+                                      formControlName="about" 
+                                      ></textarea>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                    <input matInput 
+                                    placeholder="plays" 
+                                    type="number"
+                                    formControlName="plays"
+                                    >
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                    <input matInput 
+                                    placeholder="wins" 
+                                    type="number"
+                                    formControlName="wins"
+                                    >
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                    <input matInput 
+                                    placeholder="loses" 
+                                    type="number"
+                                    formControlName="loses"
+                                    >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input 
+                                      matInput
+                                      type="text"
+                                      placeholder="FaceBook path"
+                                      formControlName="fbPath" 
+                                      >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input 
+                                      matInput
+                                      type="text"
+                                      placeholder="Twich path"
+                                      formControlName="twichPath" 
+                                      >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input 
+                                      matInput
+                                      type="text"
+                                      placeholder="Twitter path"
+                                      formControlName="twitterPath " 
+                                      >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input 
+                                      matInput
+                                      type="text"
+                                      placeholder="Youtube path"
+                                      formControlName="youTubePath" 
+                                      >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                               <div class="col-md-6 col-sm-12">
+                                    <!-- <p *ngFor="let player of allPlayers" (click)="addPlayer(player)">{{player.name}}</p> -->
+                                    <div class="dropDownContainer">
+                                        <div class="dropDownBtn" (click)="dropDownListToggle()">
+                                            <button>players</button>
+                                            <i class="material-icons arrow_drop_down_icon">arrow_drop_down_icon</i>
+                                        </div>
+                                        <div class="dropDownList Visibility" id="dropDownList">
+                                            <div class="dropDownItem">
+                                                <label class="checkbox" *ngFor="let player of allPlayers" for="{{player.userId}}">
+                                                    <input class="checkbox__input" type="checkbox" name="myCheckboxName" id="{{player.userId}}"  (change)="fieldsChange($event)" type="checkbox"> 
+                                                    <div class="checkbox__box"></div>
+                                                    <div class="checkbox__text">{{player.name}}</div>
+                                                    <div class="checkbox__avatar">
+                                                        <img [src]="ShowImage(player.image)" class="avatar">
+                                                    </div>
+                                                </label>   
+                                            </div>
+                                        </div>
+                                    </div>
+                               </div>
+                            </div>
+
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Add Team</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  

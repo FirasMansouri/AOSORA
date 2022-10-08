@@ -1,0 +1,57 @@
+.imgContainer{
+    width: 300px;
+    height: 330px;
+    border: 2px black dashed;
+    margin: 30px 0;
+    .imgBox{
+        position: relative;
+        width: 100%;
+        height: 300px;
+        img{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+        }
+    }
+    .uploadBtn{
+        display: block;
+        width: 100%;
+        background-color: #ffffff;
+        border: none;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+
+.minContainer{
+    width: 200px;
+    height: 230px;
+    border: 2px black dashed;
+    margin: 30px 0;
+    .imgBox{
+        position: relative;
+        width: 100%;
+        height: 200px;
+        img{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+        }
+    }
+    .uploadBtn{
+        display: block;
+        width: 100%;
+        background-color: #ffffff;
+        border: none;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+    }
+}

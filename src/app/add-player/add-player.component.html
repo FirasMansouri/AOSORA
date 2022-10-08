@@ -1,0 +1,125 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form [formGroup]="addPlayerForm" (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-12">
+                                  <div class="imgContainer" (click)="avatar.click()">
+                                    <div class="imgBox">
+                                      <img [src]="ShowImage(AvatarPath)" class="avatar">
+                                    </div>
+                                    <input 
+                                    type="file" 
+                                    placeholder="Choose file" 
+                                    style="display:none;"
+                                    #avatar
+                                    (click)="avatar.click()"
+                                    (change)="uploadAvatar(avatar.files)" 
+                                    >
+                                  </div>
+                                </div>
+                              </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput 
+                                      placeholder="Player Name"
+                                      formControlName="name"
+                                      >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput 
+                                      placeholder="Email address" 
+                                      type="email"
+                                      formControlName="email"
+                                      >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput 
+                                        placeholder="Password" 
+                                        type="password"
+                                        formControlName="password"
+                                        >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row" formGroupName="Address">
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput 
+                                  placeholder="City" 
+                                  type="text"
+                                  formControlName="city"
+                                  >
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput 
+                                  placeholder="Street" 
+                                  type="text"
+                                  formControlName="street"
+                                  >
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput 
+                                  placeholder="Postal Code" 
+                                  type="text"
+                                  formControlName="postalCode"
+                                  >
+                                </mat-form-field>
+                              </div>
+                          </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                    <input matInput 
+                                    type="number"
+                                    placeholder="plays" 
+                                    formControlName="plays"
+                                    >
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                    <input matInput 
+                                    type="number"
+                                    placeholder="wins" 
+                                    formControlName="wins"
+                                    >
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                    <input matInput 
+                                    type="number"
+                                    placeholder="loses" 
+                                    formControlName="loses"
+                                    >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Add Player</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

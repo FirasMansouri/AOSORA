@@ -1,0 +1,77 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 offset-md-10">
+                <button class="btn" routerLink="/addTeam">New Team</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Image
+                                    </th>
+                                    <th>
+                                        name
+                                    </th>
+                                    <th>
+                                        about
+                                    </th>
+                                    <th>
+                                      plays
+                                    </th>
+                                    <th>
+                                      wins
+                                    </th>
+                                    <th>
+                                      loses
+                                    </th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let team of teams">
+                                          <td>
+                                            <img [src]="ShowImage(team.image)" width="60px" height="60px">
+                                          </td>
+                                          <td>
+                                              {{team.name}}
+                                          </td>
+                                          <td>
+                                              {{team.about}}
+                                          </td>
+                                          <td>
+                                              {{team.plays}}
+                                          </td>
+                                          <td>
+                                              {{team.wins}}
+                                          </td>
+                                          <td>
+                                              {{team.loses}}
+                                          </td>
+                                          <td>
+                                            <div class="icons d-flex align-items-center">
+                                                <span class="icon inf" routerLink="/teamDetails" (click)="sendTeam(team)">
+                                                    <i class="material-icons">info</i>
+                                                </span>
+                                                <span class="icon upd" routerLink="/updateTeam" (click)="sendTeam(team)">
+                                                    <i class="material-icons">edit</i>
+                                                </span>
+                                                <span class="icon dlt">
+                                                    <i class="material-icons" (click)="deleteTeam(team.id)">delete</i>
+                                                </span>
+                                            </div>
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

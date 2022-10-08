@@ -1,0 +1,59 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-primary">
+                        Team Details: 
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <img [src]="ShowImage(team.image)" alt="" width="200px" height="200px">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>team name:</strong> {{team.name}}
+                                        </td>
+                                        <td>
+                                            <strong>about:</strong> {{team.about }} 
+                                        </td>
+                                        <td>
+                                            <strong>plays:</strong> {{team.plays}}
+                                        </td>
+                                        <td>
+                                            <strong>wins:</strong> {{team.wins}}
+                                        </td>
+                                        <td>
+                                            <strong>loses:</strong> {{team.loses}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-primary">
+                        List of Players: 
+                    </div>
+                    <div class="card-body">
+                        <div *ngFor="let player of teamPlayers">
+                            <p>{{player.name}}</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

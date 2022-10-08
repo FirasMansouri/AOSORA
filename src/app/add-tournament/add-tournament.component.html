@@ -1,0 +1,163 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form [formGroup]="addTournamentForm" (ngSubmit)="onSubmit()">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="imgContainer" (click)="avatar.click()">
+                                <div class="imgBox">
+                                  <img [src]="ShowImage(ImagePath)" class="avatar">
+                                </div>
+                                <input 
+                                type="file" 
+                                placeholder="Choose file" 
+                                style="display:none;"
+                                #avatar
+                                (click)="avatar.click()"
+                                (change)="uploadAvatar(avatar.files)" 
+                                >
+                              </div>
+                            </div>
+                          </div>
+                            <div class="row">
+                                <div class="col-md-6 dateBox">
+                                    <label for="start" class="dateLabel">Start Date:</label>
+                                    <input type="datetime-local" id="start" name="start" class="dateInput" formControlName="beginDate">
+                                </div>
+                                <div class="col-md-6 dateBox">
+                                    <label for="finish" class="dateLabel">Finish Date:</label>
+                                    <input type="datetime-local" id="finish" name="finish" class="dateInput" formControlName="endDate">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput 
+                                      placeholder="Place" 
+                                      formControlName="place"
+                                      >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-5">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput 
+                                      placeholder="name" 
+                                      formControlName="name"
+                                      >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <textarea 
+                                        matInput
+                                        type="text"
+                                        placeholder="About"
+                                        formControlName="about" 
+                                        ></textarea>
+                                      </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput 
+                                      type="number"
+                                      placeholder="First Price" 
+                                      formControlName="firstPrice"
+                                      >
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput 
+                                        type="number"
+                                        placeholder="Second Price" 
+                                        formControlName="secondPrice"
+                                        >
+                                      </mat-form-field>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput 
+                                        type="number"
+                                        placeholder="Third Price" 
+                                        formControlName="thirdPrice"
+                                        >
+                                      </mat-form-field>
+                                  </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-5">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput 
+                                      placeholder="Platform" 
+                                      formControlName="platform"
+                                      >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-5">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput 
+                                    placeholder="Stream Path" 
+                                    formControlName="streamPath"
+                                    >
+                                  </mat-form-field>
+                              </div>
+                          </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                     <!-- <p *ngFor="let player of allPlayers" (click)="addPlayer(player)">{{player.name}}</p> -->
+                                     <div class="dropDownContainer">
+                                         <div class="dropDownBtn" (click)="dropDownListToggle()">
+                                             <button>List of matchs</button>
+                                             <i class="material-icons arrow_drop_down_icon">arrow_drop_down_icon</i>
+                                         </div>
+                                         <div class="dropDownList Visibility" id="dropDownList">
+                                             <div class="dropDownItem">
+                                                 <label class="checkbox" *ngFor="let match of allMatchs" for="{{match.id}}">
+                                                     <input class="checkbox__input" type="checkbox" name="myCheckboxName" id="{{match.id}}"  (change)="fieldsChange($event)" type="checkbox"> 
+                                                     <div class="checkbox__box"></div>
+                                                     <div class="checkbox__text">
+                                                       <img class="ml-5" [src]="ShowImage(match.team1.image)" width="50px" height="50px">
+                                                      <span class="ml-3 mr-5">
+                                                        {{match.team1.name}}
+                                                      </span>
+                                                       vs 
+                                                      <span class="mr-3 ml-5">
+                                                        {{match.team2.name}}
+                                                      </span>
+                                                      <img [src]="ShowImage(match.team2.image)" width="50px" height="50px"> 
+                                                    </div>
+                                                     <!-- <div class="checkbox__avatar">
+                                                         <img [src]="ShowImage(player.image)" class="avatar">
+                                                     </div> -->
+                                                 </label>   
+                                             </div>
+                                         </div>
+                                     </div>
+                                </div>
+                             </div>
+
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Add Tournament</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

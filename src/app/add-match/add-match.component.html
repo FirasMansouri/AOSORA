@@ -1,0 +1,128 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form [formGroup]="addMatchForm" (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-12 dateBox">
+                                    <label for="match" class="dateLabel">Match Date:</label>
+                                    <input type="datetime-local" id="match" name="match" class="dateInput" formControlName="date">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" style="padding-inline: 50px;">
+                                    <div class="about">About Match: </div>
+                                    <ckeditor [editor]="editor" data=""></ckeditor>
+                                </div>
+                            </div>
+                            <div class="row matchTeams">
+                                <!-- <div class="col-md-5">
+                                    <select class="custom-select" formControlName="team1Id">
+                                        <option *ngFor="let team of teamsOptions1" [ngValue]="team.id" value="team.id">
+                                            {{team.name}}
+                                        </option>
+                                    </select>
+                                </div> -->
+                                <mat-form-field>
+                                  <mat-label>team 1</mat-label>
+                                  <mat-select  formControlName="team1Id"  >
+                                    <mat-option *ngFor="let team of teamsOptions1" [ngValue]="team.id" (click)="changeTeam1(team)">
+                                      <img [src]="ShowImage(team.image)" alt="" class="ml-3 mr-3 mt-3 mb-3" width="50px" height="50px"> {{team.name}}
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                <div class="col-md-2 d-flex justify-content-center align-items-center vs">
+                                    vs
+                                </div>
+                                <!-- <div class="col-md-5">
+                                    <select class="custom-select" formControlName="team2Id">
+                                        <option *ngFor="let team of teamsOptions2" [ngValue]="team.id" value="team.id">{{team.name}}</option>
+                                    </select>
+                                </div> -->
+
+                                <mat-form-field>
+                                  <mat-label>team 2</mat-label>
+                                  <mat-select  formControlName="team2Id"  >
+                                    <mat-option *ngFor="let team of teamsOptions2" [ngValue]="team.id" (click)="changeTeam2(team)">
+                                      <img [src]="ShowImage(team.image)" alt="" class="ml-3 mr-3 mt-3 mb-3" width="50px" height="50px"> {{team.name}}
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+
+                            </div>
+                            <div class="row" style="padding-inline: 50px;">
+                                <div class="col-md-12">
+                                  <div class="imgContainer">
+                                    <div class="imgBox">
+                                      <img [src]="ShowImage(FirstImagePath)">
+                                    </div>
+                                    <input 
+                                    type="file" 
+                                    placeholder="Choose file" 
+                                    style="display:none;"
+                                    #file1
+                                    (change)="uploadFile1(file1.files)" 
+                                    >
+                                    <button type="button" class="uploadBtn" (click)="file1.click()">Upload File</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row"  style="padding-inline: 50px;">
+                                  <div class="col-md-4">
+                                    <div class="minContainer">
+                                      <div class="imgBox">
+                                        <img [src]="ShowImage(SecondImagePath)" >
+                                      </div>
+                                      <input 
+                                      type="file" 
+                                      placeholder="Choose file" 
+                                      style="display:none;"
+                                      #file2
+                                      (change)="uploadFile2(file2.files)" 
+                                      >
+                                      <button type="button" class="uploadBtn" (click)="file2.click()">Upload File</button>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="minContainer">
+                                      <div class="imgBox">
+                                        <img [src]="ShowImage(ThirdImagePath)" >
+                                      </div>
+                                      <input 
+                                      type="file" 
+                                      placeholder="Choose file" 
+                                      style="display:none;"
+                                      #file3
+                                      (change)="uploadFile3(file3.files)" 
+                                      >
+                                      <button type="button" class="uploadBtn" (click)="file3.click()">Upload File</button>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <div class="minContainer">
+                                        <div class="imgBox">
+                                          <img [src]="ShowImage(FourthImagePath)" >
+                                        </div>
+                                        <input 
+                                        type="file" 
+                                        placeholder="Choose file" 
+                                        style="display:none;"
+                                        #file4
+                                        (change)="uploadFile4(file4.files)" 
+                                        >
+                                        <button type="button" class="uploadBtn" (click)="file4.click()">Upload File</button>
+                                      </div>
+                                    </div>
+                              </div>
+                            
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Add Match</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

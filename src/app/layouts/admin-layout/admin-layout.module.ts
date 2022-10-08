@@ -22,6 +22,28 @@ import { UsersComponent } from 'app/users/users.component';
 import { OrdersComponent } from 'app/orders/orders.component';
 import { UpdateUserComponent } from 'app/update-user/update-user.component';
 import { OrderDetailsComponent } from 'app/order-details/order-details.component';
+import { PlayersComponent } from 'app/players/players.component';
+import { TeamsComponent } from 'app/teams/teams.component';
+import { MatchsComponent } from 'app/matchs/matchs.component';
+import { TournamentsComponent } from 'app/tournaments/tournaments.component';
+import { PlayerDetailsComponent } from 'app/player-details/player-details.component';
+import { MatchDetailsComponent } from 'app/match-details/match-details.component';
+import { TournamentDetailsComponent } from 'app/tournament-details/tournament-details.component';
+import { AddPlayerComponent } from 'app/add-player/add-player.component';
+import { AddTeamComponent } from 'app/add-team/add-team.component';
+import { AddMatchComponent } from 'app/add-match/add-match.component';
+import { AddTournamentComponent } from 'app/add-tournament/add-tournament.component';
+import { UpdatePlayerComponent } from 'app/update-player/update-player.component';
+import { UpdateTeamComponent } from 'app/update-team/update-team.component';
+import { UpdateMatchComponent } from 'app/update-match/update-match.component';
+import { UpdateTournamentComponent } from 'app/update-tournament/update-tournament.component';
+import { TeamDetailsComponent } from 'app/team-details/team-details.component';
+import { BlogsComponent } from 'app/blogs/blogs.component';
+import { BlogDetailsComponent } from 'app/blog-details/blog-details.component';
+import { AddBlogComponent } from 'app/add-blog/add-blog.component';
+import { UpdateBlogComponent } from 'app/update-blog/update-blog.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -35,7 +57,9 @@ import { OrderDetailsComponent } from 'app/order-details/order-details.component
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDatepickerModule,
+    CKEditorModule
   ],
   declarations: [
     DashboardComponent,
@@ -50,7 +74,27 @@ import { OrderDetailsComponent } from 'app/order-details/order-details.component
     UpdateUserComponent,
     AddProductComponent,
     UpdateProductComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    PlayersComponent,
+    TeamsComponent,
+    MatchsComponent,
+    TournamentsComponent,
+    PlayerDetailsComponent,
+    MatchDetailsComponent,
+    TournamentDetailsComponent,
+    AddPlayerComponent,
+    AddTeamComponent,
+    AddMatchComponent,
+    AddTournamentComponent,
+    UpdatePlayerComponent,
+    UpdateTeamComponent,
+    UpdateMatchComponent,
+    UpdateTournamentComponent,
+    TeamDetailsComponent,
+    BlogsComponent,
+    BlogDetailsComponent,
+    AddBlogComponent,
+    UpdateBlogComponent
   ]
 })
 

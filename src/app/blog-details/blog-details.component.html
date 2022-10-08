@@ -1,0 +1,28 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text" [innerHtml]="blog.content" ></p>
+                        <div class="col-12 mt-5 mb-5 pt-5 pb-5 blog-images">
+                            <div class="blog-image">
+                                <img [src]="ShowImage(FirstImagePath)" alt="Blog Image" width="200px" height="200px">
+                            </div>
+                            <div class="blog-image" >
+                                <img [src]="ShowImage(SecondImagePath)" alt="Blog Image"  width="200px" height="200px">
+                            </div>
+                            <div class="blog-image" >
+                                <img [src]="ShowImage(ThirdImagePath)" alt="Blog Image"  width="200px" height="200px">
+                            </div>
+                            <div class="blog-image" >
+                                <img [src]="ShowImage(FourthImagePath)" alt="Blog Image"  width="200px" height="200px">
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  

@@ -1,0 +1,87 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form [formGroup]="addBlogForm" (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-12" style="padding-inline: 50px;">
+                                    <div class="about">Blog Content: </div>
+                                    <ckeditor [editor]="editor" data=""></ckeditor>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                  <div class="imgContainer">
+                                    <div class="imgBox">
+                                      <img [src]="ShowImage(FirstImagePath)">
+                                    </div>
+                                    <input 
+                                    type="file" 
+                                    placeholder="Choose file" 
+                                    style="display:none;"
+                                    #file1
+                                    (change)="uploadFile1(file1.files)" 
+                                    >
+                                    <button type="button" class="uploadBtn" (click)="file1.click()">Upload File</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-4">
+                                    <div class="minContainer">
+                                      <div class="imgBox">
+                                        <img [src]="ShowImage(SecondImagePath)" >
+                                      </div>
+                                      <input 
+                                      type="file" 
+                                      placeholder="Choose file" 
+                                      style="display:none;"
+                                      #file2
+                                      (change)="uploadFile2(file2.files)" 
+                                      >
+                                      <button type="button" class="uploadBtn" (click)="file2.click()">Upload File</button>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="minContainer">
+                                      <div class="imgBox">
+                                        <img [src]="ShowImage(ThirdImagePath)" >
+                                      </div>
+                                      <input 
+                                      type="file" 
+                                      placeholder="Choose file" 
+                                      style="display:none;"
+                                      #file3
+                                      (change)="uploadFile3(file3.files)" 
+                                      >
+                                      <button type="button" class="uploadBtn" (click)="file3.click()">Upload File</button>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <div class="minContainer">
+                                        <div class="imgBox">
+                                          <img [src]="ShowImage(FourthImagePath)" >
+                                        </div>
+                                        <input 
+                                        type="file" 
+                                        placeholder="Choose file" 
+                                        style="display:none;"
+                                        #file4
+                                        (change)="uploadFile4(file4.files)" 
+                                        >
+                                        <button type="button" class="uploadBtn" (click)="file4.click()">Upload File</button>
+                                      </div>
+                                    </div>
+                              </div>
+                            
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Add Blog</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
