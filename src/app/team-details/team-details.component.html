@@ -1,0 +1,165 @@
+<!-- Start Page Title Area -->
+<section class="page-title-area page-title-bg1">
+    <div class="container">
+        <div class="page-title-content">
+            <img [src]="ShowImage(team.image)" alt="image" width="200px" height="200px">
+            <br>
+            <h1 title="{{team.name}}">{{team.name}}</h1>
+        </div>
+    </div>
+</section>
+<!-- End Page Title Area -->
+
+<!-- Start Team Details -->
+<section class="team-details-area ptb-100">
+    <div class="container">
+        <div class="team-details-desc">
+            <img [src]="ShowImage(team.image)" class="player-image" alt="image" width="250px" height="250px" style="margin-bottom: 30px;">
+            <span class="sub-title">{{team.name}}</span>
+            <h3>About the Team</h3>
+            <p>
+                {{team.about}}            
+            </p>
+
+            <ul class="team-meta">
+                <li>
+                    <div class="icon">
+                        <i class="flaticon-medal"></i>
+                    </div>
+                    <span>{{team.wins}}</span>
+                    Wins
+                </li>
+
+                <li>
+                    <div class="icon">
+                        <i class="flaticon-fall"></i>
+                    </div>
+                    <span>{{team.loses}}</span>
+                    Loses
+                </li>
+
+                <li>
+                    <div class="icon">
+                        <i class="flaticon-teamwork"></i>
+                    </div>
+                    <span>{{team.plays}}</span>
+                    Plays
+                </li>
+
+                <li>
+                    <div class="icon">
+                        <i class="flaticon-network"></i>
+                    </div>
+                    <div class="social">
+                        <a href="#" target="_blank"><i class="bx bxl-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="bx bxl-twitch"></i></a>
+                        <a href="#" target="_blank"><i class="bx bxl-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="bx bxl-youtube"></i></a>
+                    </div>
+                    Follow
+                </li>
+            </ul>
+
+            <div class="player-list">
+                <h3>Gamestar</h3>
+                
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let player of teamPlayers">
+                        <div class="single-team-member">
+                            <img [src]="ShowImage(player.image)" alt="image">
+
+                            <div class="content">
+                                <h3>{{player.name}}</h3>
+                                <span></span>
+                            </div>
+
+                            <a routerLink="/playerDetails" (click)="sendPlayer(player)" class="link-btn"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="streams-list">
+                <h3>STREAMS</h3>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-live-stream-item">
+                            <img src="assets/img/trending-img1.jpg" alt="image">
+
+                            <div class="content">
+                                <h3>Fortnite Light</h3>
+                                <ul class="meta">
+                                    <li>Youtube</li>
+                                    <li>Online</li>
+                                </ul>
+                            </div>
+
+                            <a href="#" class="video-btn"><i class="flaticon-play-button"></i></a>
+                            <a href="#" target="_blank" class="link-btn"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-live-stream-item">
+                            <img src="assets/img/trending-img2.jpg" alt="image">
+
+                            <div class="content">
+                                <h3>Apex Legends</h3>
+                                <ul class="meta">
+                                    <li>Vimeo</li>
+                                    <li>Online</li>
+                                </ul>
+                            </div>
+
+                            <a href="#" class="video-btn"><i class="flaticon-play-button"></i></a>
+                            <a href="#" target="_blank" class="link-btn"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3">
+                        <div class="single-live-stream-item">
+                            <img src="assets/img/trending-img3.jpg" alt="image">
+
+                            <div class="content">
+                                <h3>Past Cure</h3>
+                                <ul class="meta">
+                                    <li>Twitch</li>
+                                    <li>Offline</li>
+                                </ul>
+                            </div>
+
+                            <a href="#" class="video-btn"><i class="flaticon-play-button"></i></a>
+                            <a href="#" target="_blank" class="link-btn"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="partner-list">
+                <div class="partner-slides owl-carousel owl-theme">
+                    <div class="single-partner-item">
+                        <a href="#" class="d-block"><img src="assets/img/partner-img1.png" alt="image"></a>
+                    </div>
+
+                    <div class="single-partner-item">
+                        <a href="#" class="d-block"><img src="assets/img/partner-img2.png" alt="image"></a>
+                    </div>
+
+                    <div class="single-partner-item">
+                        <a href="#" class="d-block"><img src="assets/img/partner-img3.png" alt="image"></a>
+                    </div>
+
+                    <div class="single-partner-item">
+                        <a href="#" class="d-block"><img src="assets/img/partner-img4.png" alt="image"></a>
+                    </div>
+
+                    <div class="single-partner-item">
+                        <a href="#" class="d-block"><img src="assets/img/partner-img5.png" alt="image"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Team Details -->

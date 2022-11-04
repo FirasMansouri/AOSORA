@@ -3795,6 +3795,18 @@ Magazine Demo CSS
   margin-bottom: 30px;
   position: relative;
   overflow: hidden;
+  height: 400px;
+  cursor: pointer;
+}
+
+.single-magazine-box img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  top: 0;
+  left: 0;
 }
 
 .single-magazine-box::after {
@@ -4414,32 +4426,20 @@ Popular Leagues Area CSS
 }
 
 .single-popular-leagues-box .popular-leagues-box .popular-leagues-image .image {
+  position: relative;
   height: 100%;
   width: 100%;
   border-radius: 5px 0 0 5px;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 .single-popular-leagues-box .popular-leagues-box .popular-leagues-image .image img {
-  display: none;
-}
-
-.single-popular-leagues-box .popular-leagues-box .popular-leagues-image .image.bg1 {
-  background-image: url(../img/popular-leagues-img1.jpg);
-}
-
-.single-popular-leagues-box .popular-leagues-box .popular-leagues-image .image.bg2 {
-  background-image: url(../img/popular-leagues-img2.jpg);
-}
-
-.single-popular-leagues-box .popular-leagues-box .popular-leagues-image .image.bg3 {
-  background-image: url(../img/popular-leagues-img3.jpg);
-}
-
-.single-popular-leagues-box .popular-leagues-box .popular-leagues-image .image.bg4 {
-  background-image: url(../img/popular-leagues-img4.jpg);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .single-popular-leagues-box .popular-leagues-box .popular-leagues-content {
@@ -4593,6 +4593,8 @@ Products Area CSS
 .single-products-box {
   margin-bottom: 30px;
   position: relative;
+  height: 450px;
+  margin-bottom: 100px;
 }
 
 .single-products-box .sale {
@@ -4629,11 +4631,18 @@ Products Area CSS
   position: relative;
   text-align: center;
   overflow: hidden;
+  height: 350px;
 }
 
 .single-products-box .products-image img {
   -webkit-transition: var(--transition);
   transition: var(--transition);
+  position: absolute;
+  height: 350px;
+  left: 0;
+  top: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .single-products-box .products-image .add-to-cart-btn {

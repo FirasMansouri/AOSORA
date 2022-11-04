@@ -20,11 +20,10 @@
                 <div class="select-box">
                     <label>Sort By:</label>
                     <select>
-                        <option>Default</option>
-                        <option>Popularity</option>
-                        <option>Latest</option>
-                        <option>Price: low to high</option>
-                        <option>Price: high to low</option>
+                        <option>All products</option>
+                        <option>T-SHIRTS</option>
+                        <option>HOODIES</option>
+                        <option>PANTS</option>
                     </select>
                 </div>
             </div>
@@ -34,7 +33,9 @@
             <div class="col-lg-3 col-md-4 col-sm-6"  *ngFor="let product of products">
                 <div class="single-products-box">
                     <div class="products-image">
-                        <a href="single-products.html" class="d-block"><img [src]="ShowImage(product.images)"  alt="image"></a>
+                        <!-- <a href="single-products.html" class="d-block"> -->
+                            <img [src]="ShowImage(product.images)"  alt="image">
+                        <!-- </a> -->
 
                         <span class="add-to-cart-btn" (click)="addToCart(product)">Add To Cart</span>
                     </div>

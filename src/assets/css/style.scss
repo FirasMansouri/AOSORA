@@ -3710,7 +3710,16 @@ Magazine Demo CSS
     margin-bottom: 30px;
     position: relative;
     overflow: hidden;
-
+    height: 400px;
+    cursor: pointer;
+    img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        top: 0;
+        left: 0;
+    }
     &::after {
         position: absolute;
         display: block;
@@ -4345,37 +4354,18 @@ Popular Leagues Area CSS
             border-radius: 5px 0 0 5px;
 
             .image {
+                position: relative;
                 height: 100%;
                 width: 100%;
                 border-radius: 5px 0 0 5px;
-                background: {
-                    position: center center;
-                    size: cover;
-                    repeat: no-repeat;
-                };
                 img {
-                    display: none;
-                }
-                &.bg1 {
-                    background: {
-                        image: url(../img/popular-leagues-img1.jpg);
-                    };
-                }
-                &.bg2 {
-                    background: {
-                        image: url(../img/popular-leagues-img2.jpg);
-                    };
-                }
-                &.bg3 {
-                    background: {
-                        image: url(../img/popular-leagues-img3.jpg);
-                    };
-                }
-                &.bg4 {
-                    background: {
-                        image: url(../img/popular-leagues-img4.jpg);
-                    };
-                }
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    object-fit: cover;
+                }                
             }
         }
         .popular-leagues-content {
@@ -4528,7 +4518,8 @@ Products Area CSS
 .single-products-box {
     margin-bottom: 30px;
     position: relative;
-
+    height: 450px;
+    margin-bottom: 100px;
     .sale {
         position: absolute;
         left: 10px;
@@ -4561,9 +4552,14 @@ Products Area CSS
         position: relative;
         text-align: center;
         overflow: hidden;
-
+        height: 350px;
         img {
             transition: var(--transition);
+            position: absolute;
+            height: 350px;
+            left: 0;
+            top: 0;
+            object-fit: cover;
         }
         .add-to-cart-btn {
             text-transform: uppercase;

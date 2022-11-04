@@ -20,6 +20,18 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProductsPageComponent } from './products-page/products-page.component';
 import { CartComponent } from './cart/cart.component';
 import { AuthInterceptor } from './Services/auth-interceptor';
+import { ContactComponent } from './contact/contact.component';
+import { BlogsComponent } from './blogs/blogs.component';
+import { SingleBlogComponent } from './single-blog/single-blog.component';
+import { PlayersComponent } from './players/players.component';
+import { PlayerDetailsComponent } from './player-details/player-details.component';
+import { TeamsComponent } from './teams/teams.component';
+import { TeamDetailsComponent } from './team-details/team-details.component';
+import { MatchsComponent } from './matchs/matchs.component';
+import { MatchDetailsComponent } from './match-details/match-details.component';
+import { TournamentsComponent } from './tournaments/tournaments.component';
+import { TournamentDetailsComponent } from './tournament-details/tournament-details.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 
 
@@ -39,6 +51,18 @@ import { AuthInterceptor } from './Services/auth-interceptor';
     LoginComponent,
     ProductsPageComponent,
     CartComponent,
+    ContactComponent,
+    BlogsComponent,
+    SingleBlogComponent,
+    PlayersComponent,
+    PlayerDetailsComponent,
+    TeamsComponent,
+    TeamDetailsComponent,
+    MatchsComponent,
+    MatchDetailsComponent,
+    TournamentsComponent,
+    TournamentDetailsComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,

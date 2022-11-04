@@ -34,23 +34,18 @@ export class LoginComponent implements OnInit {
 
   onSubmit(loginForm:any){
 
-    // console.log(loginForm);
     var email= loginForm.controls.Email.value;
     var password= loginForm.controls.Password.value;
     this.http.get<any>(this.loginUrl+"?email="+email+"&password="+password).subscribe(res =>{
       console.log(this.loginUrl+"?email="+email+"&password="+password);
-      // console.log(res);
       if (res==='email does not exist') {
         console.log('icorrect password')
       }else if(res==='incorrect password'){
         console.log('icorrect password')
       }else{
-        // console.log('success');
-        // console.log(res);
         localStorage.setItem("CONNECTED_USER", JSON.stringify(res[1]) )
         console.log("user from local storage: ",localStorage.getItem("CONNECTED_USER"));
         let t: string = res[0].token;
-        // console.log(t);
         localStorage.setItem("token",t)
         console.log("token from local storage: ",localStorage.getItem("token"));
       }
