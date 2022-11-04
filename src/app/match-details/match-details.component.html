@@ -2,8 +2,70 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card p-2">
                     <div class="card-body">
+                        <div class="row">
+                            <div class="text-primary primary-title mb-5">
+                                match details: 
+                            </div>
+                        </div>
+
+                        <div>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img [src]="ShowImage(match.team1.image)" class="mr-3" width="60px" height="60px">
+                                            {{match.team1.name}}
+                                        </td>
+                                        <td>
+                                            {{match.scoreTeam1}} 
+                                        </td>
+                                        <td style="width: 200px;
+                                                    font-size: 20px;
+                                                    font-weight: 600;
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                    min-height: 100px;">
+                                                    VS
+                                        </td>
+                                        <td>
+                                            {{match.scoreTeam2}} 
+                                        </td>
+                                        <td>
+                                            {{match.team2.name}}
+                                            <img [src]="ShowImage(match.team2.image)" class="ml-3" width="60px" height="60px">
+                                        </td>
+                                        <td>
+                                            {{match.date | date: 'dd/MM/yyyy hh:mm a' }} 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>                        
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-2">
+                                <span class="label label-default second-title text-primary">about:</span>
+                            </div>
+                            <div class="col-md-12">
+                                <span class="label label-default" [innerHtml]="match.about"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-5 mb-5 pt-5 pb-5 blog-images">
+                            <div class="blog-image">
+                                <img [src]="ShowImage(FirstImagePath)" alt="Blog Image" width="200px" height="200px">
+                            </div>
+                            <div class="blog-image" >
+                                <img [src]="ShowImage(SecondImagePath)" alt="Blog Image"  width="200px" height="200px">
+                            </div>
+                            <div class="blog-image" >
+                                <img [src]="ShowImage(ThirdImagePath)" alt="Blog Image"  width="200px" height="200px">
+                            </div>
+                            <div class="blog-image" >
+                                <img [src]="ShowImage(FourthImagePath)" alt="Blog Image"  width="200px" height="200px">
+                            </div>
+                          </div>
                         
                     </div>
                 </div>

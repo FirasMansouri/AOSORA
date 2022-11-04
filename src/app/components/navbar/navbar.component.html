@@ -45,11 +45,16 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">
-                        <i class="material-icons">person</i>
-                        <p>
+                    <a class="nav-link">
+                        <ng-container *ngIf="user ; else temp2">
+                            <img [src]="ShowImage(user.image)" alt="" class="avatar">
+                        </ng-container>
+                        <ng-template #temp2>
+                            <i class="material-icons">person</i>
+                        </ng-template>
+                        <!-- <p>
                             <span class="d-lg-none d-md-block">Account</span>
-                        </p>
+                        </p> -->
                     </a>
                 </li>
             </ul>

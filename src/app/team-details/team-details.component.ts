@@ -31,4 +31,8 @@ export class TeamDetailsComponent implements OnInit {
     return `https://localhost:7256/${ImagePath}`; 
   }
 
+  sendPlayer(player){
+    this.usersApi.sendPlayer(player);
+  }
+
 }

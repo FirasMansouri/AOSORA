@@ -1,13 +1,72 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-2 offset-md-10">
+                <button class="btn" routerLink="/addTournament">New tournament</button>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Place
+                                    </th>
+                                    <th>
+                                        Begin Date
+                                    </th>
+                                    <th>
+                                        End Date
+                                    </th>
+                                    <th>
+                                        Platform
+                                    </th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let tournament of tournaments">
+                                          <td>
+                                              {{tournament.name}}
+                                          </td>
+                                          <td>
+                                              {{tournament.place}}
+                                          </td>
+                                          <td>
+                                              {{tournament.beginDate | date: 'dd/MM/yyyy hh:mm a' }}
+                                          </td>
+                                          <td>
+                                              {{tournament.endDate | date: 'dd/MM/yyyy hh:mm a' }}
+                                          </td>
+                                          <td>
+                                              {{tournament.platform}}
+                                          </td>
+                                          <td>
+                                            <div class="icons d-flex align-items-center">
+                                                <span class="icon inf" routerLink="/tournamentDetails" (click)="sendTournament(tournament)">
+                                                    <i class="material-icons">info</i>
+                                                </span>
+                                                <span class="icon upd" routerLink="/updateTournament" (click)="sendTournament(tournament)">
+                                                    <i class="material-icons">edit</i>
+                                                </span>
+                                                <span class="icon dlt">
+                                                    <i class="material-icons" (click)="deleteTournament(tournament.id)">delete</i>
+                                                </span>
+                                            </div>
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  

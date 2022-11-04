@@ -18,32 +18,32 @@
                                 </div>
                             </div>
                             <div class="row matchTeams">
-                                <!-- <div class="col-md-5">
-                                    <select class="custom-select" formControlName="team1Id">
-                                        <option *ngFor="let team of teamsOptions1" [ngValue]="team.id" value="team.id">
-                                            {{team.name}}
-                                        </option>
-                                    </select>
-                                </div> -->
+
                                 <mat-form-field>
-                                  <mat-label>team 1</mat-label>
+                                  <mat-label>
+                                    <span *ngIf="team1; else team1IsNullBlock">
+                                      {{team1.name}}
+                                    </span>
+                                    <ng-template #team1IsNullBlock><span>team 1</span></ng-template>
+                                  </mat-label>
                                   <mat-select  formControlName="team1Id"  >
                                     <mat-option *ngFor="let team of teamsOptions1" [ngValue]="team.id" (click)="changeTeam1(team)">
                                       <img [src]="ShowImage(team.image)" alt="" class="ml-3 mr-3 mt-3 mb-3" width="50px" height="50px"> {{team.name}}
                                     </mat-option>
                                   </mat-select>
                                 </mat-form-field>
+
                                 <div class="col-md-2 d-flex justify-content-center align-items-center vs">
                                     vs
                                 </div>
-                                <!-- <div class="col-md-5">
-                                    <select class="custom-select" formControlName="team2Id">
-                                        <option *ngFor="let team of teamsOptions2" [ngValue]="team.id" value="team.id">{{team.name}}</option>
-                                    </select>
-                                </div> -->
 
                                 <mat-form-field>
-                                  <mat-label>team 2</mat-label>
+                                  <mat-label>
+                                    <span *ngIf="team2; else team2IsNullBlock">
+                                      {{team2.name}}
+                                    </span>
+                                    <ng-template #team2IsNullBlock><span>team 2</span></ng-template>
+                                  </mat-label>
                                   <mat-select  formControlName="team2Id"  >
                                     <mat-option *ngFor="let team of teamsOptions2" [ngValue]="team.id" (click)="changeTeam2(team)">
                                       <img [src]="ShowImage(team.image)" alt="" class="ml-3 mr-3 mt-3 mb-3" width="50px" height="50px"> {{team.name}}

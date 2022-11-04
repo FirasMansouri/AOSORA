@@ -2,12 +2,20 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card p-3">
                     <div class="card-body">
                         <form>
                             <div class="row">
+                                <div class="text-primary primary-title mb-5">
+                                    player details: 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <img [src]="ShowImage(player.image)" alt="" width="200px" height="200px" class="mb-5">
+                            </div>
+                            <div class="row">
                                 <div class="col-md-2">
-                                    <span class="label label-default"><strong>name:</strong> </span>
+                                    <span class="label label-default second-title text-primary">name:</span>
                                 </div>
                                 <div class="col-md-10">
                                     <span class="label label-default">{{player.name}}</span>
@@ -15,7 +23,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-2">
-                                    <span class="label label-default"><strong>email:</strong></span>
+                                    <span class="label label-default second-title text-primary">email:</span>
                                 </div>
                                 <div class="col-md-10">
                                     <span class="label label-default">{{player.email}}</span>
@@ -24,24 +32,24 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <span class="label label-default"><strong>plays:</strong> {{player.plays}}</span>
+                                    <span class="label label-default second-title text-primary">plays: </span> {{player.plays}}
                                 </div>
                                 <div class="col-md-4">
-                                    <span class="label label-default"><strong>wins: </strong>{{player.wins}}</span>
+                                    <span class="label label-default second-title text-primary">wins: </span> {{player.wins}}
                                 </div>
                                 <div class="col-md-4">
-                                    <span class="label label-default"><strong>loses:</strong> {{player.loses}}</span>
+                                    <span class="label label-default second-title text-primary">loses: </span> {{player.loses}}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <span class="label label-default"><strong>city:</strong> {{player.address.city}}</span>
+                                    <span class="label label-default second-title text-primary">city: </span>{{player.address.city}}
                                 </div>
                                 <div class="col-md-4">
-                                    <span class="label label-default"><strong>street: </strong>{{player.address.street}}</span>
+                                    <span class="label label-default second-title text-primary">street: </span>{{player.address.street}}
                                 </div>
                                 <div class="col-md-4">
-                                    <span class="label label-default"><strong>postal code:</strong> {{player.address.zipCode}}</span>
+                                    <span class="label label-default second-title text-primary">postal code: </span>{{player.address.zipCode}}
                                 </div>
                             </div>
                         </form>

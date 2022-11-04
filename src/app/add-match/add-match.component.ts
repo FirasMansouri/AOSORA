@@ -18,6 +18,8 @@ export class AddMatchComponent implements OnInit {
   addMatchForm: FormGroup;
   teamsOptions1: Team[]= [];
   teamsOptions2: Team[]= [];
+  team1:Team;
+  team2:Team;
   public editor= ClassicEditor;
   ImagesPathArray: string[]= ["","","",""];
   ImagesPathString:string="";
@@ -128,13 +130,13 @@ export class AddMatchComponent implements OnInit {
 
 
   changeTeam1(T){
-    console.log(T.id);
     this.addMatchForm.controls.team1Id.setValue(T.id);
+    this.team1=T;
   }
 
   changeTeam2(T){
-    console.log(T.id);
     this.addMatchForm.controls.team2Id.setValue(T.id);
+    this.team2=T;
   }
 
 
@@ -153,20 +155,20 @@ export class AddMatchComponent implements OnInit {
     this.addMatchForm.controls.images.setValue(this.ImagesPathString);
 
     //send data
-    // this.matchsApi.addMatch(this.addMatchForm.value).subscribe(data=>{
-    //   console.log(data);
-    // },error=>{
-    //   console.error(error);
-    // },()=>{
-    //   console.log('completed succeffully!')
-    //   this.FirstImagePath="";
-    //   this.SecondImagePath=""
-    //   this.ThirdImagePath=""
-    //   this.FourthImagePath=""
-    //   this.addMatchForm.reset();
-    //   alert("match added succefully !!")
-    //   this.router.navigate(["matchs"])
-    // })
+    this.matchsApi.addMatch(this.addMatchForm.value).subscribe(data=>{
+      console.log(data);
+    },error=>{
+      console.error(error);
+    },()=>{
+      console.log('completed succeffully!')
+      this.FirstImagePath="";
+      this.SecondImagePath=""
+      this.ThirdImagePath=""
+      this.FourthImagePath=""
+      this.addMatchForm.reset();
+      alert("match added succefully !!")
+      this.router.navigate(["matchs"])
+    })
 
     console.log(this.addMatchForm.value)
 

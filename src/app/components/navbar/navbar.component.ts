@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
+import { User } from 'app/Models/User';
 
 @Component({
   selector: 'app-navbar',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+    user: User;
     private listTitles: any[];
     location: Location;
       mobile_menu_visible: any = 0;
@@ -32,7 +34,18 @@ export class NavbarComponent implements OnInit {
            this.mobile_menu_visible = 0;
          }
      });
+
+     //if connected user
+     if(localStorage.getItem("CONNECTED_USER")){
+        this.user= JSON.parse(localStorage.getItem("CONNECTED_USER")); 
+        console.log("from navbar: ", this.user);
+      }
     }
+    
+    //show image
+    public ShowImage = (ImagePath: string) => { 
+        return `https://localhost:7256/${ImagePath}`; 
+      }
 
     sidebarOpen() {
         const toggleButton = this.toggleButton;

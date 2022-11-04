@@ -25,12 +25,12 @@ export class LoginComponent implements OnInit {
         }else if(res==='incorrect password'){
           console.log('icorrect password')
         }else{
-          console.log('success');
-          let t: string = res.token;
+          localStorage.setItem("CONNECTED_ADMIN", JSON.stringify(res[1]) )
+          console.log("user from local storage: ",localStorage.getItem("CONNECTED_ADMIN"));
+          let t: string = res[0].token;
           localStorage.setItem("token",t)
           console.log("token from local storage: ",localStorage.getItem("token"));
-          this.router.navigate(['']);
-          return true;
+          this.router.navigate(['/dashboard']);
         }
       }, error =>{
         console.log(error);

@@ -1,6 +1,11 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-2 offset-md-10">
+                <button class="btn" routerLink="/addBlog">New Blog</button>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12 d-flex flex-wrap">
 
                 <div class="card mr-5" style="width: 18rem;" *ngFor="let blog of blogs">

@@ -1,0 +1,25 @@
+.blog-images{
+    display: flex;
+    justify-content: space-around;
+    .blog-image{
+        width: 200px;
+        height: 200px;
+        position: relative;
+        img{
+            position: absolute;
+            top: 0;
+            right: 0;
+            object-fit: cover;
+        }
+    }
+}
+
+.primary-title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.second-title{
+    font-size: 15px;
+    font-weight: bold;
+}

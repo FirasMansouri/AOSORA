@@ -1,13 +1,73 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-2 offset-md-10">
+                <button class="btn" routerLink="/addMatch">New Match</button>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Team 1
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                        Team 2
+                                    </th>
+                                    <th>
+                                      Date
+                                    </th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let match of matchs">
+                                          <td>
+                                            <img [src]="ShowImage(match.team1.image)" class="mr-3" width="60px" height="60px">
+                                              {{match.team1.name}}
+                                          </td>
+                                          <td style="width: 200px;
+                                                    font-size: 20px;
+                                                    font-weight: 600;
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                    min-height: 100px;">
+                                                    VS
+                                          </td>
+                                          <td>
+                                            {{match.team2.name}}
+                                              <img [src]="ShowImage(match.team2.image)" class="ml-3" width="60px" height="60px">
+                                          </td>
+                                          <td>
+                                              {{match.date | date: 'dd/MM/yyyy hh:mm a' }} 
+                                          </td>
+                                          <td>
+                                            <div class="icons d-flex align-items-center">
+                                                <span class="icon inf" routerLink="/matchDetails" (click)="sendMatch(match)">
+                                                    <i class="material-icons">info</i>
+                                                </span>
+                                                <span class="icon upd" routerLink="/updateMatch" (click)="sendMatch(match)">
+                                                    <i class="material-icons">edit</i>
+                                                </span>
+                                                <span class="icon dlt">
+                                                    <i class="material-icons" (click)="deleteProduct(match.id)">delete</i>
+                                                </span>
+                                            </div>
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  

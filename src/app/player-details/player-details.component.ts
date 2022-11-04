@@ -19,4 +19,8 @@ export class PlayerDetailsComponent implements OnInit {
     })
   }
 
+  public ShowImage = (ImagePath: string) => { 
+    return `https://localhost:7256/${ImagePath}`; 
+  }
+
 }
